@@ -1,0 +1,273 @@
+<div class="login" id="loginModal">
+    <div class="login animated">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    {{ this.formState ? "Реєстрація через" : "Авторизація через" }}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="social">
+                            <a id="facebook_login" class="circle facebook" data-toggle="modal" data-target="#exampleModalCenter">
+                                <fa-icon [icon]="faFacebookF"></fa-icon>
+                            </a>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                            <span>або</span>
+                            <div class="line r"></div>
+                        </div>
+                        <div class="form loginBox" #auth *ngIf="!formState">
+                            <form [formGroup]="SignInFormGroup" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <input id="email" class="form-control" type="text" placeholder="Email" formControlName="email" [ngClass]="{
+                      'is-invalid':
+                        SignInForm.email.errors && SignInForm.email.dirty
+                    }" />
+                                    <div *ngIf="SignInForm.email.errors && SignInForm.email.dirty" class="invalid-feedback">
+                                        <div *ngIf="
+                        SignInForm.email.errors?.email ||
+                        SignInForm.email.errors?.pattern
+                      ">
+                                            Email формат порушено
+                                        </div>
+                                        <div *ngIf="SignInForm.email.errors?.validateEmail">
+                                            Некоректний email адрес
+                                        </div>
+                                    </div>
+                                </div>
+                                <input id="password" class="form-control" type="password" placeholder="Пароль" formControlName="password" [ngClass]="{
+                    'is-invalid':
+                      SignInForm.password.errors &&
+                      (SignInForm.password.touched || SignInForm.password.dirty)
+                  }" />
+
+                                <div *ngIf="
+                    SignInForm.password.errors &&
+                    (SignInForm.password.touched || SignInForm.password.dirty)
+                  " class="invalid-feedback">
+                                    <div *ngIf="SignInForm.password.errors?.minlength">
+                                        Поле повинне містити мінімум 6 символів
+                                    </div>
+                                    <div *ngIf="SignInForm.password.errors?.validatePassword">
+                                        Пароль занадто легкий
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-default btn-login" [disabled]="SignInFormGroup.invalid">
+                  Ввійти
+                </button>
+                            </form>
+                            <div class="forgot-password">
+                                <a data-toggle="modal" data-target="#exampleModal">забули пароль?</a
+                >
+              </div>
+            </div>
+            <div class="content registerBox" #registration *ngIf="formState">
+              <div class="form">
+                <form
+                  [formGroup]="SignUpFormGroup"
+                  (ngSubmit)="onSubmitSignUp()"
+                >
+                  <div class="input-group">
+                    <input
+                      id="email"
+                      class="form-control"
+                      type="text"
+                      placeholder="Email"
+                      formControlName="email_su"
+                      (blur)="checkEmail()"
+                      [ngClass]="{
+                        'is-invalid':
+                          SignUpForm.email_su.errors &&
+                          (SignUpForm.email_su.touched ||
+                            SignUpForm.email_su.dirty)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        SignUpForm.email_su.errors &&
+                        (SignUpForm.email_su.touched ||
+                          SignUpForm.email_su.dirty)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          SignUpForm.email_su.errors?.email ||
+                          SignUpForm.email_su.errors?.pattern
+                        "
+                      >
+                        Неправильний формат вводу email
+                      </div>
+                      <div *ngIf="SignUpForm.email_su.errors?.validateEmail">
+                        Некоректний email
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Ваше ім’я"
+                      formControlName="firstName"
+                      [ngClass]="{
+                        'is-invalid':
+                          SignUpForm.firstName.errors &&
+                          (SignUpForm.firstName.touched ||
+                            SignUpForm.firstName.dirty)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        SignUpForm.firstName.errors &&
+                        (SignUpForm.firstName.touched ||
+                          SignUpForm.firstName.dirty)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="SignUpForm.firstName.errors.minLength">
+                        Поле ім'я - повинне мати мінімум 3 символів
+                      </div>
+                      <div *ngIf="SignUpForm.firstName.errors.maxLength">
+                        Поле ім'я - повинне мати максимум 30 символів
+                      </div>
+                      <div
+                        *ngIf="
+                          SignUpForm.firstName.errors?.pattern ||
+                          SignUpForm.firstName.errors.validateName
+                        "
+                      >
+                        Неправильний формат вводу
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Ваше прізвище"
+                      formControlName="surname"
+                      [ngClass]="{
+                        'is-invalid':
+                          SignUpForm.surname.errors &&
+                          (SignUpForm.surname.touched ||
+                            SignUpForm.surname.dirty)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        SignUpForm.surname.errors &&
+                        (SignUpForm.surname.touched || SignUpForm.surname.dirty)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div *ngIf="SignUpForm.surname.errors.minLength">
+                        Поле прізвище - повинне мати мінімум 3 символів
+                      </div>
+                      <div *ngIf="SignUpForm.surname.errors.maxLength">
+                        Поле прізвище - повинне мати максимум 30 символів
+                      </div>
+                      <div
+                        *ngIf="
+                          SignUpForm.surname.errors?.pattern ||
+                          SignUpForm.surname.errors?.validateName
+                        "
+                      >
+                        Неправильний формат вводу
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input
+                      id="password"
+                      class="form-control"
+                      type="password"
+                      placeholder="Пароль"
+                      formControlName="password_su"
+                      [ngClass]="{
+                        'is-invalid':
+                          SignUpForm.password_su.errors &&
+                          (SignUpForm.password_su.touched ||
+                            SignUpForm.password_su.dirty)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        SignUpForm.password_su.errors &&
+                        (SignUpForm.password_su.touched ||
+                          SignUpForm.password_su.dirty)
+                      "
+                      class="invalid-feedback"
+                    >                      
+                      <div *ngIf="SignUpForm.password_su.errors?.minlength">
+                        Пароль повинен мати мінімум 6 символів
+                      </div>
+                      <div
+                        *ngIf="SignUpForm.password_su.errors?.validatePassword"
+                      >
+                        Пароль занадто легкий
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <input
+                      id="password_confirmation"
+                      class="form-control"
+                      type="password"
+                      placeholder="Повторіть пароль"
+                      formControlName="repeatPassword"
+                      [ngClass]="{
+                        'is-invalid':
+                          (SignUpForm.repeatPassword.errors &&
+                            (SignUpForm.repeatPassword.touched ||
+                              SignUpForm.repeatPassword.dirty)) ||
+                          SignUpFormGroup.hasError('validatePasswords')
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        (SignUpForm.repeatPassword.errors &&
+                          (SignUpForm.repeatPassword.touched ||
+                            SignUpForm.repeatPassword.dirty)) ||
+                        SignUpFormGroup.hasError('validatePasswords')
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="SignUpFormGroup.hasError('validatePasswords')"
+                      >
+                        Паролі не збігаються
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-default btn-login"
+                    [disabled]="SignUpFormGroup.invalid"
+                  >
+                    Зареєструватись
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="forgot login-footer" *ngIf="!formState">
+          <span
+            >Хочете <a (click)="formState = true">зареєструватись</a> ?
+                                </span>
+                            </div>
+                            <div class="forgot register-footer" *ngIf="formState">
+                                <span>Вже є аккаунт? </span>
+                                <a href="" (click)="formState = false">Ввійти</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <app-facebook></app-facebook>

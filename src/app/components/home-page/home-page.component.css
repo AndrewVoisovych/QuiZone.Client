@@ -1,0 +1,12 @@
+.loginPanel {
+    margin-top: 3%;
+}
+
+.home-title {
+    font-family: Caveat;
+}
+
+@font-face {
+    font-family: "Caveat";
+    src: url(../../../assets/fonts/CaveatBold.ttf) format("truetype");
+}

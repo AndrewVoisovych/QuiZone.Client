@@ -1,0 +1,43 @@
+<!-- header-start -->
+<header>
+  <div class="header-area ">
+      <div id="sticky-header" class="main-header-area ">
+          <div class="container-fluid p-0">
+              <div class="row align-items-center justify-content-between no-gutters">
+                  <div class="col-xl-2 col-lg-2">
+                      <div class="logo-img">
+                          <a href="index.html">
+                              <img src="../../../assets/img/logo.png" alt="">
+                          </a>
+                      </div>
+                  </div>
+                  <div class="col-xl-8 col-lg-8">
+                      <div class="main-menu  d-none d-lg-block">
+                          <nav>
+                              <ul id="navigation" style="text-align: right;">
+                                  <li><a [routerLinkActive]="['active']" routerLink="/home">Домашня</a></li>
+                                  <li><a >Про нас</a></li>
+                                  <li><a [routerLinkActive]="['active']" routerLink="/quiz">Тестування <i class="ti-angle-down"></i></a>
+                                      <ul class="submenu">
+                                          <li><a [routerLinkActive]="['active']" routerLink="/addquiz">Додати</a></li>
+                                          <li><a href="single-blog.html">single-blog</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a [routerLinkActive]="['active']" href="/">Кабінет</a></li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <div class="mobile_menu d-block d-lg-none"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<!-- header-end -->
+
+<!-- slider_area_start -->
+<div *ngIf="this.router.url !== '/home'" class="slider_area-another slider_bg_1"></div>
+<!-- slider_area_end -->

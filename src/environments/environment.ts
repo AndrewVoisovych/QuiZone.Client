@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAddress: 'http://localhost:54955/api'
+  urlAddress: 'https://quizone.azurewebsites.net/api'
 };
 
 /*
