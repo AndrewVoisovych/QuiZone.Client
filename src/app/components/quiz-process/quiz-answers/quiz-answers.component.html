@@ -1,0 +1,30 @@
+<div *ngFor="let answer of answers">
+    <ul class="list-group" (click)="answer.checked=!answer.checked">
+        <li class="list-group-item list-group-item-action">
+            <!-- [ngClass]="{'custom-list-active': checked===true }" -->
+            <div *ngIf="questionId===1; else sort">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio{{answer.id}}" name="customRadio" [checked]="answer.checked" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio{{answer.id}}"> {{answer.body}}</label>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <ng-template #manyAnswers>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck{{answer.id}}" [checked]="answer.checked">
+            <label class="custom-control-label" for="customCheck{{answer.id}}">{{answer.body}}</label>
+        </div>
+    </ng-template>
+    <ng-template #sort>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck{{answer.id}}" [checked]="answer.checked">
+            <label class="custom-control-label" for="customCheck{{answer.id}}">{{answer.body}}</label>
+            <label class="float-right">
+            <fa-icon [icon]="downIcon" (click)="Sort(answer.id, true)"></fa-icon> 
+            <fa-icon [icon]="upIcon"></fa-icon>
+        </label>
+        </div>
+    </ng-template>
+</div>

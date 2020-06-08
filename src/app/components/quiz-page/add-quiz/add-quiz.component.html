@@ -1,81 +1,87 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xl-12">
-      <div class="serction_title_large">
-        <h3>
-          Додати тестування
-        </h3>
-      </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="serction_title_large">
+                <h3>
+                    Додати тестування
+                </h3>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
 <div class="container container-custom">
-  <div class="row row-margin">
-    <label for="basic-url">Назва тестування</label>
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        id="basic-url"
-        aria-describedby="basic-addon3"
-      />
+    <div class="row row-margin">
+        <div class="col-sm-12">
+            <label for="basic-url">Назва тестування</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" />
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Опис</span>
+                </div>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+        </div>
     </div>
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Опис</span>
-      </div>
-      <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button
-            class="btn btn-outline-secondary dropdown-toggle"
-            type="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Dropdown
+    <div class="row row-margin">
+        <div class="col-sm-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Вид
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item">Action</a>
-            <a class="dropdown-item">Another action</a>
-            <a class="dropdown-item">Something else here</a>
-          </div>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="category = 'Багаторазове'">Багаторазове</a>
+                        <a class="dropdown-item" (click)="category = 'Одноразове'">Одноразове</a>
+                        <a class="dropdown-item" (click)="category = 'Навчання'">Навчання</a>
+                        <a class="dropdown-item" (click)="category = 'Оцінкове одноразове'">Оцінкове одноразове</a>
+                        <a class="dropdown-item" (click)="category = 'Оцінкове багаторазове'">Оцінкове багаторазове</a>
+                    </div>
+                </div>
+                <input type="text" class="form-control" value={{category}} aria-label="Text input with dropdown button" readonly />
+            </div>
         </div>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Text input with dropdown button"
-        />
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Upload</span>
+        <div class="col-sm-6">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Завантажити</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                    <label class="custom-file-label" for="inputGroupFile01">Обрати файл...</label>
+                </div>
+            </div>
         </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01" />
-          <label class="custom-file-label" for="inputGroupFile01"
-            >Choose file</label
-          >
+    </div>
+
+    <div class="row row-margin">
+        <div class="col-sm-6 text-left">
+            <button class="btn-card" (click)="addQuestion()">
+        Додати запитання
+      </button>
         </div>
-      </div>
+        <div class="col-sm-6 text-right">
+            <button class="btn-card" data-toggle="modal" data-target="#profilePageModal">
+        Імпорт Даних
+      </button>
+        </div>
     </div>
-  </div>
-  <div class="row row-margin">
-    <div class="col-sm-6">
-      <button (click)="addQuestion()">+++++</button>
+    <div class="row row-margin">
+        <div class="col-sm-12 text-сenter">
+            <button class="btn btn-default btn-create" (click)="createQuiz()">
+        Опублікувати
+      </button>
+        </div>
     </div>
-    <div class="col-sm-6">
-      <button>import</button>
-    </div>
-  </div>
 </div>
 
-<div *ngFor="let q of question" >
-  <app-quiz-question></app-quiz-question>
+<div *ngFor="let q of question">
+    <app-quiz-question (deleteId)="removeQuestion($event)" [questionId]="q"></app-quiz-question>
 </div>
+
+<app-profile-page></app-profile-page>

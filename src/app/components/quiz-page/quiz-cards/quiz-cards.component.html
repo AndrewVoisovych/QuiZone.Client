@@ -1,59 +1,42 @@
 <!-- Card -->
-<div class="card">
-  <!-- Card content -->
-  <div class="card-body">
-    <!-- Content -->
-    <div>
-      <!-- Title -->
-      <h4 class="card-title">Lorem ipsum dolor sit amet consectetur.</h4>
-      <!-- Subtitle -->
-      <div id="textbox">
-        <p class="card-text alignleft">07/24/2018</p>
-        <p class="alignright">CategoryName</p>
-      </div>
+<div class="card" (click)="test()">
+    <!-- Card content -->
+    <div class="card-body">
+        <!-- Content -->
+        <div>
+            <!-- Title -->
+            <h4 class="card-title">{{quiz.name}}</h4>
+            <!-- Subtitle -->
+            <div id="textbox">
+                <p class="card-text alignleft">{{quiz.createDate | date:'shortDate'}}</p>
+                <p class="alignright">{{quiz.topic}}</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Card image -->
-  <div class="view overlay">
-    <img
-      class="card-img-top rounded-0"
-      src="../../../../assets/img/noImageTesting.png"
-      alt="Card image cap"
-    />
-    <a href="#!">
-      <div class="mask rgba-white-slight"></div>
-    </a>
-  </div>
-
-  <!-- Card content -->
-  <div class="card-body">
-    <div class="collapse-content">
-      <!-- Text -->
-      <p class="card-text" id="collapseContent">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
-        perspiciatis...
-      </p>
-
-      <!-- Button -->
-      <button class="btn-card" routerLink="/quiz/start/1">Відкрити</button>
-      <fa-icon
-        [icon]="faShareAlt"
-        title="Поширити"
-        data-toggle="tooltip"
-        data-placement="top"
-        class="text-muted float-right p-1 my-1"
-      >
-      </fa-icon>
-      <fa-icon
-        [icon]="faHeart"
-        title="Додати собі"
-        data-toggle="tooltip"
-        data-placement="top"
-        class="text-muted float-right p-1 my-1 mr-3"
-      >
-      </fa-icon>
+    <!-- Card image -->
+    <div class="view overlay">
+        <img class="card-img-top rounded-0" src={{imagePath}} />
+        <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+        </a>
     </div>
-  </div>
+
+    <!-- Card content -->
+    <div class="card-body">
+        <div class="collapse-content">
+            <!-- Text -->
+            <p class="card-text" id="collapseContent">
+                {{descrpiption}}
+            </p>
+
+            <!-- Button -->
+            <button class="btn-card" routerLink={{link}}>Відкрити</button>
+            <fa-icon [icon]="faShareAlt" title="Поширити" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1">
+            </fa-icon>
+            <fa-icon [icon]="faHeart" title="Додати собі" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1 mr-3">
+            </fa-icon>
+        </div>
+    </div>
 </div>
 <!-- Card -->

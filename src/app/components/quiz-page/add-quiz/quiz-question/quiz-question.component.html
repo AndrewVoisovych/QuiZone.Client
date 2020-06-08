@@ -1,150 +1,119 @@
 <div class="container container-custom">
-  
-  <!-- First row, position and close -->
-  <div class="row row-margin no-gutter">
-    <div class="col-sm-6">
-      <div class="position-title">#1</div>
-    </div>
-    <div class="col-sm-6">
-      <div class="position-close">
-        <a (click)="RemoveQuestion()"><fa-icon [icon]="faTimes"> </fa-icon></a>
-      </div>
-    </div>
-  </div>
-  <!-- end firt row -->
 
-
-  <!-- Second row  -->
-  <div class="row row-margin no-gutter">
-    <!-- 1 col question -->
-    <div class="col-sm-5">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Запитання</span>
+    <!-- First row, position and close -->
+    <div class="row row-margin no-gutter">
+        <div class="col-sm-6">
+            <div class="position-title">#{{positionTitle}}</div>
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </div>
+        <div class="col-sm-6">
+            <div class="position-close">
+                <a (click)="RemoveQuestion(questionId)">
+                    <fa-icon [icon]="faTimes"> </fa-icon>
+                </a>
+            </div>
+        </div>
     </div>
-    <!-- end 1 col -->
+    <!-- end firt row -->
 
-    <!-- 2 col type quesion -->
-    <div class="col-sm-4">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button
-            class="btn btn-outline-secondary dropdown-toggle"
-            type="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Dropdown
+
+    <!-- Second row  -->
+    <div class="row row-margin no-gutter">
+        <!-- 1 col question -->
+        <div class="col-sm-5">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Запитання</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Введіть ваше запитання" aria-label="Username" aria-describedby="basic-addon1" />
+            </div>
+        </div>
+        <!-- end 1 col -->
+
+        <!-- 2 col type quesion -->
+        <div class="col-sm-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Тип
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item">Action</a>
-            <a class="dropdown-item">Another action</a>
-            <a class="dropdown-item">Something else here</a>
-          </div>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="category = 'Одна відповідь'">Одна відповідь</a>
+                        <a class="dropdown-item" (click)="category = 'Багато відповідей'">Багато відповідей</a>
+                        <a class="dropdown-item" (click)="category = 'Ввід слова'">Ввід слова</a>
+                        <a class="dropdown-item" (click)="category = 'Ввід тексту'">Ввід тексту</a>
+                    </div>
+                </div>
+                <input type="text" class="form-control" value={{category}} placeholder="Тип питання" aria-label="Text input with dropdown button" readonly/>
+            </div>
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Тип питання"
-          aria-label="Text input with dropdown button"
-        />
-      </div>
-    </div>
-    <!-- end 2 col -->
+        <!-- end 2 col -->
 
-    <!-- 3 col price  -->
-    <div class="col-sm-3">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <input
-              type="checkbox"
-              aria-label="Checkbox for following text input"
-            />
-          </div>
-          <span class="input-group-text">Оцінка</span>
+        <!-- 3 col price  -->
+        <div class="col-sm-3">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" />
+                    </div>
+                    <span class="input-group-text">Оцінка</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" />
+            </div>
         </div>
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Amount (to the nearest dollar)"
-        />
-      </div>
+        <!-- end 3 col -->
     </div>
-    <!-- end 3 col -->
-  </div>
 
 
-  <!-- Third row -->
-  <div class="row row-margin no-gutter">
-    <!-- 1 col answer -->
-    <div class="col-sm-5">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Відповідь</span>
+    <!-- Third row -->
+    <div class="row row-margin no-gutter">
+        <!-- 1 col answer -->
+        <div class="col-sm-5">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Відповідь</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Відповідь" aria-label="Username" aria-describedby="basic-addon1" />
+            </div>
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-    </div>
-    <!-- end 1 col -->
+        <!-- end 1 col -->
 
-    <!-- 2 col-->
-    <div class="col-sm-3">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <input
-              type="checkbox"
-              aria-label="Checkbox for following text input"
-            />
-          </div>
-          <span class="input-group-text">Кількість відповідей</span>
+        <!-- 2 col-->
+        <div class="col-sm-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" name="answerCheckBoxInput" (change)="answerCheckbox($event)" />
+                    </div>
+                    <span class="input-group-text">Кількість відповідей</span>
+                </div>
+                <input type="number" min="1" max="8" class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]="answersCount" (change)="answerInput()" />
+            </div>
         </div>
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Amount (to the nearest dollar)"
-        />
-      </div>
-    </div>
-    <!-- end 2 col -->
+        <!-- end 2 col -->
 
-    <!-- 3 col price  -->
-    
-    <div class="col-sm-3">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <input
-              type="checkbox"
-              aria-label="Checkbox for following text input"
-            />
-          </div>
-          <span class="input-group-text">Позиція</span>
+        <!-- 3 col price  -->
+
+        <div class="col-sm-3">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" name="positionCheckBoxInput" (change)="positionCheckbox($event)" />
+                    </div>
+                    <span class="input-group-text">Позиція</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" min="1" [(ngModel)]="position" (change)="positionInput()" />
+            </div>
         </div>
-        <input
-          type="number"
-          class="form-control"
-          aria-label="Amount (to the nearest dollar)"
-        />
-      </div>
+        <!-- end 3 col -->
     </div>
-    <!-- end 3 col -->
-  </div>
-  </div>
+    <div *ngIf="predicateAnswers" class="row row-margin no-gutter answer-block">
+        <div *ngFor="let item of answers; let i = index" class="col-sm-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Відповідь {{i+1}}</span>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" />
+            </div>
+        </div>
+    </div>
+</div>

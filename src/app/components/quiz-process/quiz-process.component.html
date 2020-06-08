@@ -1,3 +1,45 @@
-<p>
-  quiz-process works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="serction_title_large">
+                <h3>
+                    {{ testingName }}
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container container-custom">
+    <div class="row row-margin">
+        <div class="col-sm-4"> <button class="btn-card" (click)="EndQuiz()">
+            Завершити 
+          </button></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <!-- Timer -->
+            <app-quiz-timer [time]="timer"></app-quiz-timer>
+            <!-- /Timer -->
+        </div>
+    </div>
+    <div class="row" style="margin-top: 7%;">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 text-center">
+            <div class="question-title">{{ question }}</div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row row-margin">
+        <div class="col-sm-12">
+            <!-- Answers -->
+            <app-quiz-answers [questionId]="categoryId" [answers]="answers"></app-quiz-answers>
+            <!-- /Answers -->
+        </div>
+    </div>
+    <div class="row row-margin">
+        <div class="col-sm-12">
+            <!-- Pagination -->
+            <app-quiz-pagination (selectPage)="currentPage($event)" [(page)]="page"> </app-quiz-pagination>
+            <!-- /Pagination -->
+        </div>
+    </div>
+</div>

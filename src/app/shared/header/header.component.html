@@ -1,43 +1,47 @@
 <!-- header-start -->
 <header>
-  <div class="header-area ">
-      <div id="sticky-header" class="main-header-area ">
-          <div class="container-fluid p-0">
-              <div class="row align-items-center justify-content-between no-gutters">
-                  <div class="col-xl-2 col-lg-2">
-                      <div class="logo-img">
-                          <a href="index.html">
-                              <img src="../../../assets/img/logo.png" alt="">
-                          </a>
-                      </div>
-                  </div>
-                  <div class="col-xl-8 col-lg-8">
-                      <div class="main-menu  d-none d-lg-block">
-                          <nav>
-                              <ul id="navigation" style="text-align: right;">
-                                  <li><a [routerLinkActive]="['active']" routerLink="/home">Домашня</a></li>
-                                  <li><a >Про нас</a></li>
-                                  <li><a [routerLinkActive]="['active']" routerLink="/quiz">Тестування <i class="ti-angle-down"></i></a>
-                                      <ul class="submenu">
-                                          <li><a [routerLinkActive]="['active']" routerLink="/addquiz">Додати</a></li>
-                                          <li><a href="single-blog.html">single-blog</a></li>
-                                      </ul>
-                                  </li>
-                                  <li><a [routerLinkActive]="['active']" href="/">Кабінет</a></li>
-                              </ul>
-                          </nav>
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <div class="mobile_menu d-block d-lg-none"></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area ">
+            <div class="container-fluid p-0">
+                <div class="row align-items-center justify-content-between no-gutters">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo-img">
+                            <a routerLink="/home">
+                                <img src="/assets/img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="main-menu  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation" style="text-align: right;">
+                                    <li><a [routerLinkActive]="['active']" routerLink="/home">Домашня</a></li>
+                                    <li><a [class.active]="(activeFragment | async)==='aboutQuizone'" [routerLink]="['/home']" fragment="aboutQuizone">Про нас</a></li>
+                                    <li><a [routerLinkActive]="['active']" routerLink="/quiz">Тестування <i *ngIf="isLoggedIn" class="ti-angle-down"></i></a>
+                                        <ul *ngIf="isLoggedIn" class="submenu">
+                                            <li><a [routerLinkActive]="['active']" routerLink="/addquiz">Додати</a></li>
+                                        </ul>
+                                    </li>
+                                    <li *ngIf="isLoggedIn"><a [routerLinkActive]="['active']" data-toggle="modal" data-target="#profilePageModal" href="/">Кабінет <i *ngIf="isLoggedIn" class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a (click)="logout()">Вийти</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <!-- header-end -->
 
 <!-- slider_area_start -->
-<div *ngIf="this.router.url !== '/home'" class="slider_area-another slider_bg_1"></div>
+<div *ngIf="!(this.router.url.includes('home') || this.router.url.includes('email') )" class="slider_area-another slider_bg_1"></div>
 <!-- slider_area_end -->
+<app-profile-page></app-profile-page>

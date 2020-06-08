@@ -1,0 +1,9 @@
+<div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': valueNow +'%'}" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+        {{valueNow}}%
+    </div>
+</div>
+<div *ngIf="state; else endtime">Часу залишилось: {{counter | formatTime}} / {{time | formatTime}}</div>
+<ng-template #endtime>
+    <div>Час вийшов!</div>
+</ng-template>

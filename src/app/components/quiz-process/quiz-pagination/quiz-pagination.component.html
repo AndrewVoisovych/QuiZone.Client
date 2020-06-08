@@ -1,0 +1,28 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination  pagination-lg justify-content-center">
+        <li class="page-item" [ngClass]="{ disabled: pages.previousPredicate }">
+            <a class="page-link" (click)="pageSelect(0)" tabindex="-1">
+                <fa-icon [icon]="faStepBack"></fa-icon>
+            </a>
+        </li>
+        <li class="page-item" [ngClass]="{ disabled: pages.previousPredicate }">
+            <a class="page-link" (click)="pageSelect(pages.previous)" tabindex="-1">
+                <fa-icon [icon]="faLeft"></fa-icon>
+            </a>
+        </li>
+        <li class="page-item" *ngFor="let p of pages.page" [ngClass]="{active: p.link===this.pages.current}">
+            <a class="page-link" (click)="pageSelect(p.link)">{{p.number}}</a>
+        </li>
+
+        <li class="page-item ">
+            <a class="page-link" (click)="pageSelect(pages.next)" [ngClass]="{ disabled: pages.nextPredicate }">
+                <fa-icon [icon]="faRight"></fa-icon>
+            </a>
+        </li>
+        <li class="page-item ">
+            <a class="page-link" (click)="pageSelect(page.allPages-1)" [ngClass]="{ disabled: pages.nextPredicate }">
+                <fa-icon [icon]="faStepForward"></fa-icon>
+            </a>
+        </li>
+    </ul>
+</nav>

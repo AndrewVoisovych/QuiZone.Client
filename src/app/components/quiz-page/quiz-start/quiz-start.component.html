@@ -1,20 +1,19 @@
 <div class="container">
-  <div class="row row-margin">
-    <div class="col-sm-4">
-      <img src="../../../../assets/img/noImageTesting.png" width="286" height="197"   class="img-fluid" alt="title">
-      
+    <div class="row row-margin">
+        <div class="col-sm-4">
+            <img src={{imagePath}} width="286" height="197" class="img-fluid" alt="Фото опитування" />
+        </div>
+        <div class="col-sm-8">
+            <h3>{{quiz?.name}}</h3>
+            <p>{{quiz?.description}}</p>
+        </div>
     </div>
-    <div class="col-sm-8">
-      <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, dignissimos?</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus dicta error facilis commodi voluptates inventore, tempore laborum veniam ipsam dolorem itaque laudantium facere fugit voluptate possimus, nobis rem eos molestiae.</p>
-      </div>
-  </div>
-  <div class="row row-margin">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-8">
-      <button class="btn-start" routerLink="/quiz/1">Почати тестування</button>
+    <div class="row row-margin">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            <button class="btn-start" routerLink={{link}}>
+        Почати тестування
+      </button>
+        </div>
     </div>
-    
-  </div>
 </div>
-

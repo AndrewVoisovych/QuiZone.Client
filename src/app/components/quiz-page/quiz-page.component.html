@@ -1,27 +1,23 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xl-12">
-      <div class="serction_title_large">
-        <h3>
-          Тестування
-        </h3> 
-      </div>  
-   
-    
-    </div>
-  </div>
-  <div class="row row-margin">
-    <!-- search box start-->
-    <app-search-box class="search-box"></app-search-box>
-    <!-- search box end-->
-  </div>
-  <div class="row row-margin no-gutter">
-    <div
-      *ngFor="let item of [].constructor(10); let i = index"
-      class="col-sm-3"
-    >
-      <app-quiz-cards></app-quiz-cards>
-    </div>
-  </div>
-</div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="serction_title_large">
+                <h3>
+                    Тестування
+                </h3>
+            </div>
 
+
+        </div>
+    </div>
+    <div class="row row-margin">
+        <!-- search box start-->
+        <app-search-box class="search-box"></app-search-box>
+        <!-- search box end-->
+    </div>
+    <div class="row row-margin no-gutter">
+        <div *ngFor="let quiz of quizes" class="col-sm-3">
+            <app-quiz-cards [quiz]="quiz"></app-quiz-cards>
+        </div>
+    </div>
+</div>
