@@ -14,13 +14,13 @@
             <a class="page-link" (click)="pageSelect(p.link)">{{p.number}}</a>
         </li>
 
-        <li class="page-item ">
-            <a class="page-link" (click)="pageSelect(pages.next)" [ngClass]="{ disabled: pages.nextPredicate }">
+        <li class="page-item " [ngClass]="{ disabled: pages.nextPredicate }">
+            <a class="page-link" (click)="pageSelect(pages.next)" >
                 <fa-icon [icon]="faRight"></fa-icon>
             </a>
         </li>
-        <li class="page-item ">
-            <a class="page-link" (click)="pageSelect(page.allPages-1)" [ngClass]="{ disabled: pages.nextPredicate }">
+        <li class="page-item " [ngClass]="{ disabled: pages.nextPredicate }">
+            <a class="page-link" (click)="pageSelect(page.allPages-1)" >
                 <fa-icon [icon]="faStepForward"></fa-icon>
             </a>
         </li>

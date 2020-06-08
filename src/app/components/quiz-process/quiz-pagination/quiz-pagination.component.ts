@@ -21,11 +21,12 @@ export class QuizPaginationComponent implements OnInit {
   faRight = faArrowRight;
   faStepBack = faStepBackward;
   faStepForward = faStepForward;
-  
+
   constructor(private paginatr: PaginationAgorithm) { }
   ngOnInit() {
 
   }
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges() {
     this.computedData = this.paginatr.Compute(this.page, this.pagesForView);
     this.pagesView();
@@ -34,9 +35,9 @@ export class QuizPaginationComponent implements OnInit {
   pagesView() {
 
     // Alghoritm pages
-    let pageArr = [];
+    const pageArr = [];
 
-    // push all pages 
+    // push all pages
     for (let i = this.computedData.start; i <= this.computedData.end; i++) {
       pageArr.push({ number: i, link: i - 1 });
     }
@@ -46,16 +47,15 @@ export class QuizPaginationComponent implements OnInit {
       previousPredicate: this.page.CurrentPage === 0,
       nextPredicate: (this.page.CurrentPage + 1) === this.page.allPages,
       next: (this.page.CurrentPage + 1) === this.page.allPages
-      ? this.page.CurrentPage
-      : this.page.CurrentPage +1,
+        ? this.page.CurrentPage
+        : this.page.CurrentPage + 1,
 
       previous: this.page.CurrentPage === 0
-      ? this.page.CurrentPage
-      : this.page.CurrentPage - 1,
+        ? this.page.CurrentPage
+        : this.page.CurrentPage - 1,
 
       page: pageArr
     };
-
   }
 
   pageSelect(page: number) {

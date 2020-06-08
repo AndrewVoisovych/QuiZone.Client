@@ -2,6 +2,10 @@
     margin-top: 3%;
 }
 
+
+.row {
+    height:80% !important;
+}
 .container-custom {
     padding: 5%;
     padding-top: 2%;

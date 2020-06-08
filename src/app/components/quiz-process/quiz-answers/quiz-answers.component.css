@@ -20,3 +20,19 @@
     .custom-list-active {
         background: #FAFAFA;
     }
+
+    .position-label {
+        color: #616161 !important;
+        font-size: 0,9rem !important;
+        font-weight: 400;
+        padding-left: 2%;
+    }
+
+    .fa-icon{
+        margin-right:1%;
+    }
+
+    .fa-icon:hover{
+        color: #F4511E;
+    }
+    

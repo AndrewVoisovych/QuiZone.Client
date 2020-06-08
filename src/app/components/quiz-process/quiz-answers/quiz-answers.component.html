@@ -1,8 +1,10 @@
+<div *ngIf="!(questionId ===3 || questionId===4); else manyWord">
 <div *ngFor="let answer of answers">
     <ul class="list-group" (click)="answer.checked=!answer.checked">
         <li class="list-group-item list-group-item-action">
             <!-- [ngClass]="{'custom-list-active': checked===true }" -->
-            <div *ngIf="questionId===1; else sort">
+            <div *ngIf="questionId===1; else manyAnswers">
+                
                 <div class="custom-control custom-radio">
                     <input type="radio" id="customRadio{{answer.id}}" name="customRadio" [checked]="answer.checked" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio{{answer.id}}"> {{answer.body}}</label>
@@ -12,19 +14,51 @@
 
     </ul>
     <ng-template #manyAnswers>
+        <div *ngIf="questionId==2; else sort">
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="customCheck{{answer.id}}" [checked]="answer.checked">
             <label class="custom-control-label" for="customCheck{{answer.id}}">{{answer.body}}</label>
         </div>
+    </div>
     </ng-template>
+
     <ng-template #sort>
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="customCheck{{answer.id}}" [checked]="answer.checked">
-            <label class="custom-control-label" for="customCheck{{answer.id}}">{{answer.body}}</label>
-            <label class="float-right">
-            <fa-icon [icon]="downIcon" (click)="Sort(answer.id, true)"></fa-icon> 
-            <fa-icon [icon]="upIcon"></fa-icon>
-        </label>
+        <div >
+            <span class="float-left" style="color: #616161" >#{{answers.indexOf(answer)+1}}</span>
+            <span class="position-label">{{answer.body}} </span>
+           
+            <span class="float-right fa-icon">
+                <fa-icon [icon]="downIcon" (click)="Sort(answer.id, true)"></fa-icon> 
+            </span>
+            <span class="float-right fa-icon">
+                <fa-icon [icon]="upIcon" (click)="Sort(answer.id, false)"></fa-icon>
+            </span>
+        
         </div>
     </ng-template>
 </div>
+
+</div>
+<ng-template #manyWord>
+    <div *ngIf="questionId===3; else oneWord">
+    <div class="form-group">
+            <label for="exampleFormControlTextarea1">Введіть вашу відповідь: </label>
+            <textarea class="form-control" rows="5"></textarea>
+      </div>
+    </div>
+</ng-template>
+<ng-template #oneWord>
+    <div class="row" style="margin-bottom: 10%;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Відповідь: </span>
+                </div>
+                <input type="text" class="form-control" id="" aria-describedby="Відповідь">
+              </div>  
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    
+</ng-template>

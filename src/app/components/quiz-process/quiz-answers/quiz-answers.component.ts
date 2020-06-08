@@ -25,31 +25,29 @@ export class QuizAnswersComponent implements OnInit {
     // true like a down
     if (position) {
       // if firth
-      if (id === this.answers[0].id) {
-        const currentRow = this.answers.filter(x => x.id === id);
-        const withoutCurrentRow = this.answers.filter(x => x.id !== id);
-        console.log(withoutCurrentRow);
-
-      } // if last
-      else if (id === this.answers[this.answers.length - 1].id) {
+      if (id === this.answers[this.answers.length - 1].id) {
         return;
-      } // other
+      } // if last
       else {
+        const currentRow = this.answers.filter(x => x.id === id);
+        const indexCurrentRow = this.answers.indexOf(currentRow[0]);
+        const indexNextRow = indexCurrentRow + 1;
 
+        [this.answers[indexCurrentRow], this.answers[indexNextRow]] = [this.answers[indexNextRow], this.answers[indexCurrentRow]];
       }
-
     }
     // false like a up
     else {
       // if firth
       if (id === this.answers[0].id) {
-
+          return;
       } // if last
-      else if (id === this.answers[this.answers.length - 1].id) {
-
-      }// other
       else {
+        const currentRow = this.answers.filter(x => x.id === id);
+        const indexCurrentRow = this.answers.indexOf(currentRow[0]);
+        const indexPreviousRow = indexCurrentRow - 1;
 
+        [this.answers[indexCurrentRow], this.answers[indexPreviousRow]] = [this.answers[indexPreviousRow], this.answers[indexCurrentRow]];
       }
     }
   }

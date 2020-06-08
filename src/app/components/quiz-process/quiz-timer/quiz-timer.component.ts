@@ -35,7 +35,6 @@ export class QuizTimerComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log("ngondestroy");
     this.countDown = null;
   }
 }
