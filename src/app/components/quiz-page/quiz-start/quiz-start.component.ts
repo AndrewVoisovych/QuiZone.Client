@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Quiz } from 'src/app/core/models/quiz';
+import { QuizType } from '../../../core/models/quiz.enum';
 
 @Component({
   selector: 'app-quiz-start',
@@ -15,6 +16,7 @@ export class QuizStartComponent implements OnInit {
   imagePath: string = "/assets/img/noImageTesting.png";
   link: string = '/quiz/';
   loading: boolean = false;
+  quizType: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +31,7 @@ export class QuizStartComponent implements OnInit {
         this.quizService.getQuiz(this.quizId).subscribe(res => {
           this.quiz = res;
           this.link += this.quiz.id;
+          this.quizType = this.ViewQuizType(this.quiz.categoryId);
           this.loading = true;
         },
           err => {
@@ -39,13 +42,30 @@ export class QuizStartComponent implements OnInit {
         this.toastr.warning('Такого опитування не існує', 'Помилка');
         this.router.navigate(['quiz']);
       }
-    }else{
+    } else {
       this.router.navigate(['quiz']);
     }
   }
 
   ngOnInit() {
-    
   }
+
+  ViewQuizType(type: QuizType): string {
+    switch (type) {
+      case QuizType.OneTime:
+        return 'одноразове';
+      case QuizType.Multiple:
+        return 'багаторазове';
+      case QuizType.Learning:
+        return 'режим заучування';
+      case QuizType.EstimatedOneTime:
+        return 'оцінкове одноразове';
+      case QuizType.EstimatedMultiple:
+        return 'оцінкове багаторазове';
+      case QuizType.Custom:
+        return '';
+    }
+  }
+
 
 }

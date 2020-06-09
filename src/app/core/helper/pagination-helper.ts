@@ -6,10 +6,10 @@ import { QuizPaginator, ComputeData } from '../models/pagination';
     providedIn: 'root'
 })
 
-export class PaginationAgorithm  {
+export class PaginationAgorithm {
 
-    Compute (page: QuizPaginator, pagesForView: number): ComputeData {
-        let allPages: number = page.allPages - 1;
+    Compute(page: QuizPaginator, pagesForView: number): ComputeData {
+        const allPages: number = page.allPages - 1;
         let data: ComputeData;
 
         let start: number;

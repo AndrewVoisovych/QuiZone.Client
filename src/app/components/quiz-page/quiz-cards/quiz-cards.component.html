@@ -1,13 +1,13 @@
 <!-- Card -->
-<div class="card" (click)="test()">
+<div class="card" (click)="start()">
     <!-- Card content -->
     <div class="card-body">
         <!-- Content -->
         <div>
             <!-- Title -->
-            <h4 class="card-title">{{quiz.name}}</h4>
+            <h4 (click)="noClick($event)" class="card-title">{{quiz.name}}</h4>
             <!-- Subtitle -->
-            <div id="textbox">
+            <div (click)="noClick($event)" id="textbox">
                 <p class="card-text alignleft">{{quiz.createDate | date:'shortDate'}}</p>
                 <p class="alignright">{{quiz.topic}}</p>
             </div>
@@ -30,11 +30,12 @@
                 {{descrpiption}}
             </p>
 
+            
             <!-- Button -->
             <button class="btn-card" routerLink={{link}}>Відкрити</button>
-            <fa-icon [icon]="faShareAlt" title="Поширити" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1">
+            <fa-icon [icon]="faShareAlt" id="shareCard" (click)="services($event)" title="Поширити" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1">
             </fa-icon>
-            <fa-icon [icon]="faHeart" title="Додати собі" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1 mr-3">
+            <fa-icon [icon]="faHeart" title="Додати собі" (click)="services($event)" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1 mr-3">
             </fa-icon>
         </div>
     </div>

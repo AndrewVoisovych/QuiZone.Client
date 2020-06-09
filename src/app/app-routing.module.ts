@@ -5,6 +5,7 @@ import { QuizPageComponent } from './components/quiz-page/quiz-page.component';
 import { QuizStartComponent } from './components/quiz-page/quiz-start/quiz-start.component';
 import { QuizProcessComponent } from './components/quiz-process/quiz-process.component';
 import { AddQuizComponent } from './components/quiz-page/add-quiz/add-quiz.component';
+import { EndProcessComponent } from './components/quiz-process/end-process/end-process.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'quiz/start/:id',
     component: QuizStartComponent
+  },
+  {
+    path: 'endquiz',
+    component: EndProcessComponent
   },
   {
     path: 'addquiz',

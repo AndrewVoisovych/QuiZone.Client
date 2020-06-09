@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { QuestionType } from 'src/app/core/models/question.enum';
 
 @Component({
   selector: 'app-quiz-answers',
@@ -14,12 +15,18 @@ export class QuizAnswersComponent implements OnInit {
   checked: boolean;
   upIcon = faChevronUp;
   downIcon = faChevronDown;
+  questionType: string = '';
 
   constructor() { }
 
   ngOnInit() {
-
   }
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnChanges(changes: SimpleChanges): void {
+    this.questionType = this.questionTypeToString(this.questionId);
+  }
+
 
   Sort(id: number, position: boolean) {
     // true like a down
@@ -40,7 +47,7 @@ export class QuizAnswersComponent implements OnInit {
     else {
       // if firth
       if (id === this.answers[0].id) {
-          return;
+        return;
       } // if last
       else {
         const currentRow = this.answers.filter(x => x.id === id);
@@ -49,6 +56,21 @@ export class QuizAnswersComponent implements OnInit {
 
         [this.answers[indexCurrentRow], this.answers[indexPreviousRow]] = [this.answers[indexPreviousRow], this.answers[indexCurrentRow]];
       }
+    }
+  }
+
+  questionTypeToString(type: QuestionType): string {
+    switch (type) {
+      case QuestionType.OneAnswer:
+        return 'запитання з одною відповіддю';
+      case QuestionType.ManyAnswers:
+        return 'запитання з багатьма відповідями';
+      case QuestionType.WordsInput:
+        return 'введення тексту';
+      case QuestionType.WordInput:
+        return 'введення слова/словосполучення';
+      case QuestionType.Sequence:
+        return 'установити послідовність';
     }
   }
 }

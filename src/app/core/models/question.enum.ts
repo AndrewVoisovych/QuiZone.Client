@@ -1,1 +1,8 @@
-export enum QuestionType { OneAnswer = 1, ManyAnswers = 2, WordInput = 3, CodeInput = 4 }
+export enum QuestionType {
+    OneAnswer = 1,
+    ManyAnswers = 2,
+    WordsInput = 3,
+    WordInput = 4,
+    Sequence = 5
+}
+

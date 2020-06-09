@@ -15,7 +15,7 @@
               ></path>
             </svg>
           </button>
-          <input id="search" type="text" placeholder="Пошук..." />
+          <input id="search" type="text" name="searchQuery" [(ngModel)]="query"  (ngModelChange)="changeSearchQuery()" placeholder="Пошук..." />
         </div>
       </div>
     </fieldset>

@@ -111,16 +111,20 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.errorHandling === true) {
-      this.toast.error('Користувач з такою поштою вже існує!<br> Можливо використайте відновлення паролю? ', 'Помилка :(', { enableHtml: true });
+      this.toast.error(
+        'Користувач з такою поштою вже існує!<br> Можливо використайте відновлення паролю? '
+        , 'Помилка :('
+        , { enableHtml: true });
+
       return;
     }
 
     this.user = {
-      name:  this.SignUpFormGroup.get(['firstName']).value,
+      name: this.SignUpFormGroup.get(['firstName']).value,
       surname: this.SignUpFormGroup.get(['surname']).value,
       email: this.SignUpFormGroup.get(['email_su']).value,
       password: this.SignUpFormGroup.get(['password_su']).value
-    }
+    };
 
     this.userService.insertUser(this.user).subscribe(
       res => {
@@ -129,7 +133,6 @@ export class LoginComponent implements OnInit {
           `Ваша реєстрація пройшла успішно! <br> Будь ласка перегляньте вашу пошту </a> <br> <a target="_blank" rel="noopener noreferrer" href="http://${emailDomain[1]}">Клік тут щоб перейти на домен пошти</a>`,
           'Вітаємо!', { enableHtml: true }
         );
-       
         this.formState = false;
         this.router.navigate(['home']);
       },

@@ -10,22 +10,23 @@ import { Router } from '@angular/router';
 export class AddQuizComponent implements OnInit {
   question = [];
   category: string;
+  topic: string = '';
   constructor(private toastr: ToastrService, private router: Router) { }
 
   ngOnInit() {
   }
 
   addQuestion(): void {
-    this.question.push(this.question.length+1);
+    this.question.push(this.question.length + 1);
   }
 
-  createQuiz(): void{
-    this.toastr.success("Ваше тестування створено", "Вітаємо")
+  createQuiz(): void {
+    this.toastr.success('Ваше тестування створено', 'Вітаємо');
     this.router.navigate(['quiz']);
   }
 
-  
+
   removeQuestion(id: number) {
-    this.question = this.question.filter(item=> item !== id)
+    this.question = this.question.filter(item => item !== id);
   }
 }

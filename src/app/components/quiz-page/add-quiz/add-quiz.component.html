@@ -49,14 +49,61 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Завантажити</span>
+                    <span class="input-group-text" id="basic-addon1">Зображення</span>
                 </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                    <label class="custom-file-label" for="inputGroupFile01">Обрати файл...</label>
-                </div>
+                <input type="text" class="form-control" placeholder="Посилання на зображення" aria-label="Username" aria-describedby="basic-addon1" />
             </div>
         </div>
+    </div>
+
+    <div class="row row-margin">
+        <div class="col-xl-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Категорія
+          </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)="topic = 'Англійська'">Навчання</a>
+                        <a class="dropdown-item" (click)="topic = 'Математика'">Математика</a>
+                    </div>
+                </div>
+                <input type="text" class="form-control" value={{topic}} aria-label="Text input with dropdown button"  />
+            </div>
+        </div>
+        <div class="col-xl-4">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" aria-label="Checkbox for following text input" name="positionCheckBoxInput" />
+                    </div>
+                    <span class="input-group-text">Задати таймер</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" min="0"  />
+                <div class="input-group-append">
+                    <span class="input-group-text">хв</span>
+                  </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                  </div>
+                </div>
+                <input type="text"  class="form-control" value="Випадкові позиції" readonly>
+              </div>
+        </div>
+    </div>
+
+    <div class="row row-margin">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-8">
+            
+        </div>
+        <div class="col-xl-2"></div>
     </div>
 
     <div class="row row-margin">
@@ -72,7 +119,7 @@
         </div>
     </div>
     <div class="row row-margin">
-        <div class="col-sm-12 text-сenter">
+        <div class="col-xl-12 text-сenter">
             <button class="btn btn-default btn-create" (click)="createQuiz()">
         Опублікувати
       </button>

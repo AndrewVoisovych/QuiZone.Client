@@ -1,11 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { timer, Subscription } from 'rxjs';
+declare var $: any;
 
 @Component({
   selector: 'app-quiz-timer',
   templateUrl: './quiz-timer.component.html',
   styleUrls: ['./quiz-timer.component.css']
 })
+
+
 export class QuizTimerComponent implements OnInit {
   @Input() time: number;
 
@@ -25,6 +28,8 @@ export class QuizTimerComponent implements OnInit {
       if (this.counter === this.end) {
         this.state = false;
         this.countDown.unsubscribe();
+        this.endQuiz();
+
       } else {
         --this.counter;
       }
@@ -34,8 +39,13 @@ export class QuizTimerComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy() {
     this.countDown = null;
+  }
+
+  endQuiz() {
+    $('#endTimeModal').modal({backdrop: 'static', keyboard: false});
   }
 }
 

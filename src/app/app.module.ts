@@ -33,6 +33,9 @@ import { FacebookComponent } from './components/home-page/login/facebook/faceboo
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { AngularPageVisibilityModule } from 'angular-page-visibility';
 import { CompletedAddComponent } from './components/quiz-page/add-quiz/completed-add/completed-add.component';
+import { EndTimerComponent } from './components/quiz-process/quiz-timer/end-timer/end-timer.component';
+import { EndProcessComponent } from './components/quiz-process/end-process/end-process.component';
+import { EndButtonComponent } from './components/quiz-process/end-process/end-button/end-button.component';
 
 
 
@@ -56,7 +59,10 @@ import { CompletedAddComponent } from './components/quiz-page/add-quiz/completed
     QuizAnswersComponent,
     FacebookComponent,
     ProfilePageComponent,
-    CompletedAddComponent
+    CompletedAddComponent,
+    EndTimerComponent,
+    EndProcessComponent,
+    EndButtonComponent
   ],
   imports: [
     BrowserModule,

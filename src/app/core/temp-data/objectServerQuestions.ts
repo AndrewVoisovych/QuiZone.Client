@@ -1,10 +1,11 @@
 
 export const ObjectServerQuestions = {
+    id: 1,
     quizName: 'English words',
     quizTimeLimit: '',
     randomPosition: false,
-    bloockTab: true,
-    timer: 2,
+    blockTab: true,
+    timer: 1,
     question: [{
       categoryId: 1,
       position: 1,

@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class QuizPageComponent implements OnInit {
   plusIcon = faPlus;
   quizes: Quiz[];
+  quizesFilter: Quiz[];
 
   constructor(private quizService: QuizService,
     private route: ActivatedRoute,
@@ -21,9 +22,21 @@ export class QuizPageComponent implements OnInit {
   ngOnInit() {
     this.quizService.getAllQuiz().subscribe(res => {
       this.quizes = res;
+      this.quizesFilter = res;
     });
   }
 
-  
+  search(query: string) {
+    query = query.toLowerCase().trim();
+
+    if (query === '') {
+      this.quizesFilter = this.quizes;
+    }
+
+    this.quizesFilter = this.quizes.filter(x => x.name.toLowerCase().includes(query));
+    if (this.quizesFilter.length < 1) {
+      this.quizesFilter = this.quizes.filter(x => x.description.toLowerCase().includes(query));
+    }
+  }
 
 }
