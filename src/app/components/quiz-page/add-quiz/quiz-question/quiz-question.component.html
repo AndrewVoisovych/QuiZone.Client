@@ -95,7 +95,7 @@
         <!-- 3 col price  -->
 
         <div class="col-sm-3">
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" *ngIf="!positionPredicate">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <input type="checkbox" aria-label="Checkbox for following text input" name="positionCheckBoxInput" (change)="positionCheckbox($event)" />

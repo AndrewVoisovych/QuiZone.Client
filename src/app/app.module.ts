@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,7 +76,8 @@ import { EndButtonComponent } from './components/quiz-process/end-process/end-bu
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    AngularPageVisibilityModule
+    AngularPageVisibilityModule,
+    NgxMaskModule.forRoot(),
   ],
   exports: [
     LoginComponent,

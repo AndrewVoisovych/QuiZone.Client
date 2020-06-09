@@ -41,3 +41,15 @@
     background-color: #ff7043;
     color: #ffffff;
 }
+
+.r-bottom{
+    margin-bottom: 2%;
+}
+
+.date-setting-title {
+    color: #616161;
+}
+
+.date-setting-title:hover {
+    text-decoration: none;
+}

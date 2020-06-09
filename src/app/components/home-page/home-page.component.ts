@@ -16,7 +16,7 @@ import { OnPageVisible, OnPageHidden, OnPageVisibilityChange, AngularPageVisibil
 export class HomePageComponent implements OnInit {
   email: string;
   hash: string;
-  
+
 
   constructor(
     private authService: AuthenticationService,
@@ -27,31 +27,31 @@ export class HomePageComponent implements OnInit {
   }
 
   @OnPageVisibilityChange()
-  logWhenPageVisibilityChange ( visibilityState: AngularPageVisibilityStateEnum ): void {
-    if ( AngularPageVisibilityStateEnum[visibilityState]
+  logWhenPageVisibilityChange(visibilityState: AngularPageVisibilityStateEnum): void {
+    if (AngularPageVisibilityStateEnum[visibilityState]
       === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
-      console.log( 'OnPageVisibilityChange => visible' );
+      console.log('OnPageVisibilityChange => visible');
     } else if (AngularPageVisibilityStateEnum[visibilityState]
       === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
-      console.log( 'OnPageVisibilityChange => hidden' );
+      console.log('OnPageVisibilityChange => hidden');
     } else if (AngularPageVisibilityStateEnum[visibilityState]
       === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
-      console.log( 'OnPageVisibilityChange => prerender' );
+      console.log('OnPageVisibilityChange => prerender');
     } else if (AngularPageVisibilityStateEnum[visibilityState]
       === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
-      console.log( 'OnPageVisibilityChange => unloaded' );
+      console.log('OnPageVisibilityChange => unloaded');
     }
   }
 
+  // @HostListener('window:beforeunload', ['$event'])
+  // onWindowClose(event: any): void {
 
-  // @HostListener('window:beforeunload', ['$event']) 
-  // yourfunction($event) {
-  //     return $event.returnValue='Your changes will not be saved';
+  //   $('#profilePageModal').modal();
+  //   // event.preventDefault();
+  //   // event.returnValue = false;
+
   // }
-  
-  
-  
-  
+
   ngOnInit() {
     // Email Confirm
     if (this.route.snapshot.params.email && this.route.snapshot.params.hash) {
@@ -73,33 +73,33 @@ export class HomePageComponent implements OnInit {
 
   private confirmEmail() {
     this.userService
-        .confirmEmail(this.email, this.hash)
-        .subscribe(
-          result => {
-            this.toastr.success(
-              `${result}, you can successfully login!`,
-              'Your email has been successfully verified'
+      .confirmEmail(this.email, this.hash)
+      .subscribe(
+        result => {
+          this.toastr.success(
+            `${result}, you can successfully login!`,
+            'Your email has been successfully verified'
+          );
+        },
+        error => {
+          if (error.status === 404) {
+            this.toastr.error(
+              'There is no user with this mail',
+              'Error!'
             );
-            },
-      error => {
-         if (error.status === 404) {
-           this.toastr.error(
-             'There is no user with this mail',
-             'Error!'
-           );
-        } else if (error.status === 409) {
-          this.toastr.error(
-            `Email: ${error.error} is already verified`,
-            'Error!'
-          );
-        } else if (error.status === 400) {
-          this.toastr.error(
-            'Verification error',
-            'Error!'
-          );
+          } else if (error.status === 409) {
+            this.toastr.error(
+              `Email: ${error.error} is already verified`,
+              'Error!'
+            );
+          } else if (error.status === 400) {
+            this.toastr.error(
+              'Verification error',
+              'Error!'
+            );
+          }
         }
-      }
-        );
+      );
 
 
 

@@ -54,7 +54,7 @@ export const ObjectServerQuestions = {
         categoryId: 4,
         position: 2,
         body: 'hope',
-        answers: [{ id: 17, body: '' }
+        answers: [{ id: 18, body: '' }
         ],
         randomOption: false,
         imagePath: '',
@@ -74,4 +74,3 @@ export const ObjectServerQuestions = {
       }
     ]
   };
-  

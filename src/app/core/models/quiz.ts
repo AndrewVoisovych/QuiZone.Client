@@ -7,5 +7,5 @@ export interface Quiz {
     settingId?: number;
     topicId?: number;
     topic?: string;
-    createDate?: Date
+    createDate?: Date;
 }

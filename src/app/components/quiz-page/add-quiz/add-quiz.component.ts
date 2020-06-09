@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-quiz',
@@ -11,22 +12,39 @@ export class AddQuizComponent implements OnInit {
   question = [];
   category: string;
   topic: string = '';
-  constructor(private toastr: ToastrService, private router: Router) { }
+  predicateTimer: boolean = false;
+  timerValue: number;
+  positionPredicate: boolean = false;
+  constructor(private toastr: ToastrService, private router: Router) { 
+    
+  }
 
   ngOnInit() {
   }
+
+
 
   addQuestion(): void {
     this.question.push(this.question.length + 1);
   }
 
   createQuiz(): void {
-    this.toastr.success('Ваше тестування створено', 'Вітаємо');
-    this.router.navigate(['quiz']);
+    this.toastr.success('Ваше тестування збережено', 'Вітаємо');
+    this.router.navigate(['/addquiz/completed']);
   }
 
 
   removeQuestion(id: number) {
     this.question = this.question.filter(item => item !== id);
+  }
+
+
+  timerCheckbox(event: any) {
+    this.predicateTimer = !this.predicateTimer;
+    this.timerValue = 0;
+
+  }
+  randomPositionCheckbox(event: any) {
+    this.positionPredicate = !this.positionPredicate;
   }
 }

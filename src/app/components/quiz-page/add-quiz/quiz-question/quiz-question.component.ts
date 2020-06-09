@@ -13,8 +13,8 @@ export class QuizQuestionComponent implements OnInit {
   predicatePosition: boolean = false;
   predicateAnswers: boolean = false;
 
-
   @Input() questionId: number;
+  @Input() positionPredicate: boolean;
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
 
   answers = [];
@@ -28,10 +28,9 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   ngOnChanges() {
-   
   }
 
-  RemoveQuestion(id:number) {
+  RemoveQuestion(id: number) {
     this.deleteId.emit(id);
   }
 
@@ -42,7 +41,7 @@ export class QuizQuestionComponent implements OnInit {
     } else {
       this.predicatePosition = false;
     }
-    //TODO: default position 
+    // TODO: default position 
   }
 
   positionInput() {
