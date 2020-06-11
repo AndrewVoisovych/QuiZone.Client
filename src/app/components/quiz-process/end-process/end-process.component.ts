@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./end-process.component.css']
 })
 export class EndProcessComponent implements OnInit {
+  answers: boolean = false;
   constructor() { }
 
   ngOnInit() {

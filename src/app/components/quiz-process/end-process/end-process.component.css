@@ -1,0 +1,14 @@
+.row-margin {
+    margin-top: 3%;
+}
+
+
+.row {
+    height:80% !important;
+}
+.container-custom {
+    padding: 5%;
+    padding-top: 2%;
+    border: 1px solid #F5F5F5;
+    border-radius: 5px;
+}

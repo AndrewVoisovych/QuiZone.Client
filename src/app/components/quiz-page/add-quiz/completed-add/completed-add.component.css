@@ -1,9 +1,68 @@
 .row-margin {
-    margin-top: 1%;
+  margin-top: 1%;
 }
 
 .container-custom {
-    padding: 5%;
-    border: 1px solid #F5F5F5;
-    border-radius: 5px;
+  padding: 5%;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+}
+
+.date-setting-title {
+  color: #616161;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #1f1f1f;
+}
+
+.date-setting-title:hover {
+  text-decoration: none;
+}
+
+.fa-icon-m {
+  margin-right: 1%;
+}
+
+.accordion > .card {
+  overflow: visible;
+}
+
+.remove-email {
+  color: #bdbdbd;
+  font-size: 1.4rem;
+  margin-left:2%;
+}
+
+.remove-email:hover {
+  color: #757575;
+}
+
+.position {
+  float: left;
+  color: #bdbdbd;
+  font-size: 1.3rem;
+  margin-right:2%;
+}
+
+.emails-input{
+  margin-bottom: 1%;
+}
+
+
+
+.btn-card {
+  background: transparent;
+  border: 1px solid #616161;
+  border-radius: 5px;
+  color: #424242;
+  padding: 2%;
+  padding-left: 6%;
+  padding-right: 6%;
+  width: 80%;
+  height: 120%;
+}
+
+.btn-card:hover {
+  border: 1px solid #FF8A65;
+  color: #FF8A65;
 }

@@ -12,14 +12,119 @@
 
 <div class="container container-custom">
     <div class="row row-margin">
-        змінити налаштування ЧОРТ ДУРНИЙ
+        <div class="col-xl-12">
+            <div class="accordion" id="accordionExample">
+               <div class="card">
+                  <div class="card-header" id="headingOne">
+                     <h5 class="mb-0">
+                        <button class="btn btn-link btn-block text-left date-setting-title " type="button" data-toggle="collapse" data-target="#collapseChangeSetting" aria-expanded="true" aria-controls="collapseOne">
+                            <fa-icon [icon]="checkIcon" class="fa-icon-m"></fa-icon> Змінити налаштування
+                        </button>
+                     </h5>
+                  </div>
+                  <div id="collapseChangeSetting" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                     <div class="card-body">
+                        <div class="row">
+                            ....
+                        </div>                      
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
     </div>
     <div class="row row-margin">
-        Оберіть видимість опитування
+        <div class="col-xl-12">
+            <div class="accordion" id="accordionExample">
+               <div class="card">
+                  <div class="card-header" id="headingOne">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left date-setting-title " type="button" data-toggle="collapse" data-target="#collapseAccess" aria-expanded="true" aria-controls="collapseOne">
+                            <fa-icon [icon]="checkIcon" class="fa-icon-m"></fa-icon>  Оберіть видимість опитування
+                        </button>
+                     </h2>
+                  </div>
+                  <div id="collapseAccess" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-1"></div>
+                            <div class="col-xl-10">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                       <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Видимість
+                                       </button>
+                                       <div class="dropdown-menu">
+                                          <a class="dropdown-item" (click)="accessChoise='Публічне користування'" >Публічне користування</a>
+                                          <a class="dropdown-item" (click)="accessChoise='Особисте користування'">Особисте користування</a>
+                                          <a class="dropdown-item" (click)="accessChoise='Закрите користування'">Закрите користування</a>
+                                          <a class="dropdown-item" 
+                                          (click)="accessChoise='http://localhost:4200/quiz/2C70E12B7A0646F92279F427C7B38E7334D8E5389CFF167A1DC30E73F826B683'"
+                                          >По посиланню</a>
+                                       </div>
+                                    </div>
+                                    <input type="text" (click)="copyToClipboard(accessChoise)" class="form-control" value={{accessChoise}} readonly/>
+                                 </div>
+                            </div>
+                            <div class="col-xl-auto"></div>
+                           
+                        </div>                      
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
     </div>
+
     <div class="row row-margin">
-        
-        Запросити в опитування : *кнопка додати поле* 
+        <div class="col-xl-12">
+            <div class="accordion" id="accordionExample">
+               <div class="card">
+                  <div class="card-header" id="headingOne">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left date-setting-title " type="button" data-toggle="collapse" data-target="#collapseAddMember" aria-expanded="true" aria-controls="collapseOne">
+                            <fa-icon [icon]="checkIcon" class="fa-icon-m"></fa-icon>  Запросити в опитування
+                        </button>
+                     </h2>
+                  </div>
+                  <div id="collapseAddMember" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                     <div class="card-body">
+                        <div class="row row-margin">
+                            <div class="col-xl-4 text-center h6">Запросити до тестування: </div>
+                            <div class="col-xl-4"></div>
+                            <div class="col-xl-4"></div>
+                        </div> 
+                        <div class="row row-margin">
+                            <div class="col-xl-6 text-center">
+                                <button class="btn-card"   (click)="addEmailInput()">Додати</button>
+                            </div>
+                            <div class="col-xl-6 text-center">
+                                <button class="btn-card" (click)="sendtoEmails()">Надіслати</button>
+                            </div>
+                        </div> 
+                        <div class="row" style="margin-top: 2%;">
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-8"> 
+                                <div class="emails-input" *ngFor="let e of emails; let i = index">
+                                    <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon3">Email #{{i+1}}</span>
+                                    </div>
+                                    <input type="text" class="form-control" [(ngModel)]="e.email" id="basic-url" aria-describedby="basic-addon3">
+                                    <a (click)="removeEmail(i)" class="remove-email">
+                                        <fa-icon [icon]="removeIcon"> </fa-icon>
+                                    </a>
+                                  </div>
+                                 
+                                </div>
+                            </div>
+                            <div class="col-xl-auto"></div>
+                        </div>                     
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
     </div>
 
 </div>

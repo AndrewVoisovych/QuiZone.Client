@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { CompletedAddComponent } from './components/quiz-page/add-quiz/completed
 import { EndTimerComponent } from './components/quiz-process/quiz-timer/end-timer/end-timer.component';
 import { EndProcessComponent } from './components/quiz-process/end-process/end-process.component';
 import { EndButtonComponent } from './components/quiz-process/end-process/end-button/end-button.component';
+import { EndAnswersComponent } from './components/quiz-process/end-process/end-answers/end-answers.component';
 
 
 
@@ -63,7 +65,8 @@ import { EndButtonComponent } from './components/quiz-process/end-process/end-bu
     CompletedAddComponent,
     EndTimerComponent,
     EndProcessComponent,
-    EndButtonComponent
+    EndButtonComponent,
+    EndAnswersComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ import { EndButtonComponent } from './components/quiz-process/end-process/end-bu
     ReactiveFormsModule,
     AngularPageVisibilityModule,
     NgxMaskModule.forRoot(),
+    ClipboardModule
   ],
   exports: [
     LoginComponent,

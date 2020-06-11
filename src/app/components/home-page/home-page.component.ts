@@ -52,6 +52,9 @@ export class HomePageComponent implements OnInit {
 
   // }
 
+
+
+
   ngOnInit() {
     // Email Confirm
     if (this.route.snapshot.params.email && this.route.snapshot.params.hash) {
