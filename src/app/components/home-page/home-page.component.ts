@@ -3,8 +3,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { OnPageVisible, OnPageHidden, OnPageVisibilityChange, AngularPageVisibilityStateEnum } from 'angular-page-visibility';
 
 
 @Component({
@@ -25,32 +23,6 @@ export class HomePageComponent implements OnInit {
     private toastr: ToastrService) {
 
   }
-
-  @OnPageVisibilityChange()
-  logWhenPageVisibilityChange(visibilityState: AngularPageVisibilityStateEnum): void {
-    if (AngularPageVisibilityStateEnum[visibilityState]
-      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
-      console.log('OnPageVisibilityChange => visible');
-    } else if (AngularPageVisibilityStateEnum[visibilityState]
-      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
-      console.log('OnPageVisibilityChange => hidden');
-    } else if (AngularPageVisibilityStateEnum[visibilityState]
-      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
-      console.log('OnPageVisibilityChange => prerender');
-    } else if (AngularPageVisibilityStateEnum[visibilityState]
-      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
-      console.log('OnPageVisibilityChange => unloaded');
-    }
-  }
-
-  // @HostListener('window:beforeunload', ['$event'])
-  // onWindowClose(event: any): void {
-
-  //   $('#profilePageModal').modal();
-  //   // event.preventDefault();
-  //   // event.returnValue = false;
-
-  // }
 
 
 

@@ -1,9 +1,10 @@
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ObjectServerQuestions } from '../../core/temp-data/objectServerQuestions';
 import { QuizPaginator } from 'src/app/core/models/pagination';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ScreenService } from 'src/app/core/services/screen.service';
 declare var $: any;
 
 @Component({
@@ -13,7 +14,10 @@ declare var $: any;
 })
 
 export class QuizProcessComponent implements OnInit {
-  constructor(private router: Router,  private toastr: ToastrService) { }
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private screen: ScreenService) { }
 
   testingName: string;
   question: string;
@@ -51,6 +55,11 @@ export class QuizProcessComponent implements OnInit {
   endQuiz(){
     $('#endQuizButton').modal();
   }
+
+ test(){
+    this.screen.changeValue(true);
+ }
+ // (mouseleave)="tq($event)"
 
 }
 

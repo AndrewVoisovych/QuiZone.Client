@@ -39,6 +39,7 @@ import { EndTimerComponent } from './components/quiz-process/quiz-timer/end-time
 import { EndProcessComponent } from './components/quiz-process/end-process/end-process.component';
 import { EndButtonComponent } from './components/quiz-process/end-process/end-button/end-button.component';
 import { EndAnswersComponent } from './components/quiz-process/end-process/end-answers/end-answers.component';
+import { QuizBlockedComponent } from './components/quiz-process/quiz-blocked/quiz-blocked.component';
 
 
 
@@ -66,7 +67,9 @@ import { EndAnswersComponent } from './components/quiz-process/end-process/end-a
     EndTimerComponent,
     EndProcessComponent,
     EndButtonComponent,
-    EndAnswersComponent
+    EndAnswersComponent,
+    QuizBlockedComponent
+
   ],
   imports: [
     BrowserModule,

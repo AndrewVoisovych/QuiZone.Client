@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { share } from 'rxjs/operators';
+import { interval as observableInterval } from 'rxjs';
+import { takeWhile, scan, tap, share } from 'rxjs/operators';
 
 @Component({
   selector: 'navbar',
@@ -10,7 +11,7 @@ import { share } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   activeFragment = this.route.fragment.pipe(share()); 
-  
+
   constructor(
     public router: Router,
     private authService: AuthenticationService,
@@ -27,4 +28,9 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  // scroll() {
+  //   document.body.scrollTop = document.documentElement.scrollTop = 0;
+  // }
+
 }
