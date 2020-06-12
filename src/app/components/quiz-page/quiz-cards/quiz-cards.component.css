@@ -1,45 +1,47 @@
 .collapse-content .fa.fa-heart:hover {
-  color: #f44336 !important;
+    color: #f44336 !important;
 }
+
 .collapse-content .fa.fa-share-alt:hover {
-  color: #0d47a1 !important;
+    color: #0d47a1 !important;
 }
 
 .card {
-  border-radius: 0.5rem !important;
-  margin-bottom: 5% !important;
+    border-radius: 0.5rem !important;
+    margin-bottom: 5% !important;
 }
 
-.card:hover{
-  border-color: #BDBDBD;
+.card:hover {
+    border-color: #BDBDBD;
 }
+
 .alignleft {
-  float: left;
+    float: left;
 }
+
 .alignright {
-  float: right;
+    float: right;
 }
 
 .btn-card {
-  background: transparent;
-  border: 1px solid #ffab91;
-  border-radius: 5px;
-  color: #ffab91;
-  padding: 2%;
-  padding-left: 6%;
-  padding-right: 6%;
+    background: transparent;
+    border: 1px solid #ffab91;
+    border-radius: 5px;
+    color: #ffab91;
+    padding: 2%;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 
 .btn-card:hover {
-  border: 1px solid #ff7043;
-  color: #ff7043;
+    border: 1px solid #ff7043;
+    color: #ff7043;
 }
 
 .card-body {
-  padding-bottom: 1% !important;
+    padding-bottom: 1% !important;
 }
 
-
-.body-top{
+.body-top {
     background-color: #FAFAFA;
 }

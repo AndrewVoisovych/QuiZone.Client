@@ -20,9 +20,9 @@ export class QuizPageComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.quizService.getAllQuiz().subscribe(res => {
-      this.quizes = res;
-      this.quizesFilter = res;
+    this.quizService.getAllQuiz().subscribe(result => {
+      this.quizes = result;
+      this.quizesFilter = result;
     });
   }
 

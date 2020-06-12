@@ -7,24 +7,48 @@
             <h3>{{quiz?.name}}</h3>
             <table width="100%">
                 <tr>
-                    <td><p><b>Тип опитування:</b> {{quizType}}</p></td>
-                    <td><p><b>Категорія:</b> {{quiz?.topic}}</p></td>
+                    <td>
+                        <p><b>Дата створення:</b> {{quiz?.createDate | date:'shortDate'}}</p>
+                    </td>
+                    <td>
+                        <p *ngIf="quizAccess && (quiz.accessId !== 1)"><b>Режим доступу:</b> {{quizAccess}} </p>
+                    </td>
                 </tr>
                 <tr>
-                    <td><p><b>Часовий ліміт:</b> 1 хв</p></td>
-                    <td> <p><b>Кількість питань:</b> 6</p></td>
+                    <td>
+                        <p><b>Тип опитування:</b> {{quizType}}</p>
+                    </td>
+                    <td>
+                        <p><b>Категорія:</b> {{quiz?.topic}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><b>Кількість питань:</b> 6</p>
+                    </td>
+                    <td>
+                        <p *ngIf="loading && quiz.setting.timerValue"><b>Часовий ліміт:</b> 5 хв</p>
+                    </td>
+                </tr>
+                <tr *ngIf="loading && (quiz.setting.dateStart || quiz.setting.dateEnd)">
+                    <td>
+                        <p *ngIf="quiz.setting?.dateStart"><b>Дата початку: </b> {{quiz.setting?.dateStart}} </p>
+                    </td>
+                    <td>
+                        <p *ngIf="quiz.setting?.dateEnd"><b>Дата кінця: </b> {{quiz.setting?.dateEnd}} </p>
+                    </td>
                 </tr>
             </table>
             <p><b>Опис:</b> {{quiz?.description}}</p>
-            
+
         </div>
         <div class="col-xl-auto"></div>
-      
+
     </div>
     <div class="row row-margin">
         <div class="col-xl-4"></div>
         <div class="col-xl-8">
-            <button class="btn-start" routerLink={{link}}>
+            <button class="btn-start" (click)="start()">
         Почати тестування
       </button>
         </div>

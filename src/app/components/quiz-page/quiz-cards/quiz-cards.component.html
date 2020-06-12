@@ -16,7 +16,7 @@
 
     <!-- Card image -->
     <div class="view overlay">
-        <img class="card-img-top rounded-0" src={{imagePath}} />
+        <img class="card-img-top rounded-0" width="286" height="197" src={{imagePath}} />
         <a href="#!">
             <div class="mask rgba-white-slight"></div>
         </a>
@@ -27,16 +27,21 @@
         <div class="collapse-content">
             <!-- Text -->
             <p class="card-text" id="collapseContent">
-                {{descrpiption}}
+                {{description}}
             </p>
 
-            
+
             <!-- Button -->
             <button class="btn-card" routerLink={{link}}>Відкрити</button>
-            <fa-icon [icon]="faShareAlt" id="shareCard" (click)="services($event)" title="Поширити" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1">
-            </fa-icon>
-            <fa-icon [icon]="faHeart" title="Додати собі" (click)="services($event)" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1 mr-3">
-            </fa-icon>
+            <span>
+                <fa-icon [icon]="faShareAlt" id="shareCard" (click)="shareLink($event)"
+                 title="Поширити" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1">
+                 </fa-icon>
+            </span>
+            <span>
+                <fa-icon [icon]="faHeart" title="Додати собі" (click)="addToLibrary($event)" data-toggle="tooltip" data-placement="top" class="text-muted float-right p-1 my-1 mr-3">
+                </fa-icon>
+            </span>
         </div>
     </div>
 </div>
