@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Question, Answer } from './../../../../core/models/question';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-end-answers',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./end-answers.component.css']
 })
 export class EndAnswersComponent implements OnInit {
+  @Input() question: Question;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -42,6 +42,7 @@ import { EndButtonComponent } from './components/quiz-process/end-process/end-bu
 import { EndAnswersComponent } from './components/quiz-process/end-process/end-answers/end-answers.component';
 import { QuizBlockedComponent } from './components/quiz-process/quiz-blocked/quiz-blocked.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { ImportQuizComponent } from './components/quiz-page/add-quiz/import-quiz/import-quiz.component';
 
 
 
@@ -71,7 +72,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     EndButtonComponent,
     EndAnswersComponent,
     QuizBlockedComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ImportQuizComponent
 
   ],
   imports: [

@@ -52,25 +52,25 @@ export class HomePageComponent implements OnInit {
       .subscribe(
         result => {
           this.toastr.success(
-            `${result}, you can successfully login!`,
-            'Your email has been successfully verified'
+            `${result}, ви можете авторизуватись!`,
+            'Вашу пошту успішно підтверджено'
           );
         },
         error => {
           if (error.status === 404) {
             this.toastr.error(
-              'There is no user with this mail',
-              'Error!'
+              'Користувача з такою поштою не існує',
+              'Помилка!'
             );
           } else if (error.status === 409) {
             this.toastr.error(
-              `Email: ${error.error} is already verified`,
-              'Error!'
+              `Пошта: ${error.error} вже підтверджена`,
+              'Помилка!'
             );
           } else if (error.status === 400) {
             this.toastr.error(
-              'Verification error',
-              'Error!'
+              'Помилка підтвердження пошти',
+              'Помилка!'
             );
           }
         }

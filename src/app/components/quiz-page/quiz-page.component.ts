@@ -4,6 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Quiz } from 'src/app/core/models/quiz';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quiz-page',
@@ -14,13 +15,18 @@ export class QuizPageComponent implements OnInit {
   plusIcon = faPlus;
   quizes: Quiz[];
   quizesFilter: Quiz[];
+  loading: boolean = false;
 
   constructor(private quizService: QuizService,
     private route: ActivatedRoute,
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.quizService.getAllQuiz().subscribe(result => {
+    this.quizService.getAllQuiz()
+    .pipe(
+      finalize(() => this.loading = true)
+    )
+    .subscribe(result => {
       this.quizes = result;
       this.quizesFilter = result;
     });

@@ -1,27 +1,14 @@
-# NuLPQuiZoneClient
+# This software is under development...
+# QuiZone
+The web service for adaptive test generation and automation of knowledge testing has been designed and developed as graduation project. 
+The software is designed to combine the processes of developing, carrying out, and analyzing the results of testing, and in turn, increases the effectiveness of the educational process.
+The service is developed according to the designed client-server architecture, SOLID principles are observed.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+## Part of the project: 
+  - **backend**: https://github.com/AndrewVoisovych/QuiZone.Service
+  - **frontend**: Angular CLI project, TypeScript, HTML5, CSS3, Bootstrap.  <br>
+  Connected front-end with back-end using CORS.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Details:
+**Tools & Technologies:** 
+  Angular, TypeScript, RxJs (Reactive programming), HTML5 / CSS3, Bootstrap, Git, VS Code.

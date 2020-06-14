@@ -1,0 +1,51 @@
+.custom-radio .custom-control-label::before {
+    border-radius: 49%;
+    background-color: #F5F5F5;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #F4511E;
+    background-color: #F4511E;
+}
+
+.custom-control-label {
+    color: #616161 !important;
+    cursor: pointer;
+    font-size: 1rem !important;
+    font-weight: 400;
+    padding-left: 1%;
+}
+
+.custom-list-active {
+    background: #FAFAFA;
+}
+
+.position-label {
+    color: #616161 !important;
+    font-size: 0, 9rem !important;
+    font-weight: 400;
+    padding-left: 2%;
+}
+
+.fa-icon {
+    margin-right: 1%;
+}
+
+.fa-icon:hover {
+    color: #F4511E;
+}
+
+.type-label {
+    color: #757575;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    font-size: 0.8rem;
+}
+
+.question-title {
+    font-weight: 700;
+    font-size: 2.1rem;
+    color: #1F1F1F;
+    text-transform: initial;
+}

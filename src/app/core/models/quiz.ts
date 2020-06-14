@@ -7,9 +7,9 @@ export interface Quiz {
     settingId?: number;
     topicId?: number;
     topic?: string;
-    accessHash?: string,
-    accessId: number,
-    access?: string,
+    accessHash?: string;
+    accessId: number;
+    access?: string;
     setting: QuizSettings;
     imagePath?: string;
     createDate?: Date;

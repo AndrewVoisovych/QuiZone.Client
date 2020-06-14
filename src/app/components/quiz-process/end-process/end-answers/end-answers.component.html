@@ -1,0 +1,12 @@
+<div class="row" style="margin-top: 3%;">
+    <div class="col-xl-3"></div>
+    <div class="col-xl-6 text-center">
+        <div class="question-title">{{question.body}}</div>
+    </div>
+    <div class="col-xl-3"></div>
+</div>
+<div class="row row-margin">
+    <div class="col-xl-12">
+        <app-quiz-answers [answers]="question.answers" [questionId]="question.categoryId"> </app-quiz-answers>
+    </div>
+</div>

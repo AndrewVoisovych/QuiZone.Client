@@ -7,6 +7,7 @@ import { Quiz } from 'src/app/core/models/quiz';
 import { ViewQuizType } from 'src/app/core/helper/quiz-type-helper';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quiz-start',
@@ -33,7 +34,6 @@ export class QuizStartComponent implements OnInit {
     private viewQuizType: ViewQuizType,
     private viewQuizAccess: ViewQuizAccess,
     private authService: AuthenticationService,
-    private spinner: NgxSpinnerService
   ) {
     if (this.route.snapshot.params.id) {
       this.quizId = this.route.snapshot.params.id;
@@ -45,7 +45,8 @@ export class QuizStartComponent implements OnInit {
   ngOnInit() {
     if (this.quizId) {
 
-      this.quizService.getQuiz(this.quizId).subscribe(res => {
+      this.quizService.getQuiz(this.quizId)
+      .subscribe(res => {
         this.quiz = res;
         this.link += this.quiz.id;
         this.imagePath = (this.quiz.imagePath)
@@ -58,7 +59,10 @@ export class QuizStartComponent implements OnInit {
 
 
 
-        this.quizService.getCountQuestions(this.quizId).subscribe(
+        this.quizService.getCountQuestions(this.quizId)
+        .pipe(
+          finalize(() => this.loading = true)
+        ).subscribe(
           result => {
             this.countQuestion = result;
           },
@@ -66,8 +70,6 @@ export class QuizStartComponent implements OnInit {
             this.countQuestion = 0;
           }
         );
-
-        this.loading = true;
 
       },
         err => {
@@ -86,5 +88,7 @@ export class QuizStartComponent implements OnInit {
     }
     this.router.navigate([this.link]);
   }
+
+
 
 }

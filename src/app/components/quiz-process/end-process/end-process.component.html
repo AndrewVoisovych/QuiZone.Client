@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="serction_title_large">
+    <div class=" row ">
+        <div class="col-xl-12 ">
+            <div class="serction_title_large ">
                 <h3>
                     Завершення тестування
                 </h3>
@@ -9,21 +9,40 @@
         </div>
     </div>
 </div>
-<div class="container container-custom">
-    <div class="row row-margin">
-        <div class="col-xl-3">
-            <div class="float-center">
-                <img src={{imagePath}} width="200" height="200" class="img-fluid" alt="Результат" />
+<div class="container container-custom" [ngClass]="{'loading':!loading}">
+    <div *ngIf="loading; else loadingTemplate">
+        <div class="row row-margin ">
+            <div class="col-xl-3 ">
+                <div class="float-center ">
+                    <img src="{{ imagePath }} " width="200 " height="200 " class="img-fluid " alt="Результат " />
+                </div>
+            </div>
+            <div class="col-xl-9 ">
+                <div class="h4 " style="padding-top: 1%; ">
+                    <span style="font-weight: 600; margin-right: 2%; ">Ваш результат:</span>
+                    <span [ngClass]="{ result: resultPredicate } ">{{ result }}</span>
+                </div>
+                <div style="margin-top: 2%; " *ngIf="!viewResultPredicate "> Правильні відповіді недоступні </div>
             </div>
         </div>
-        <div class="col-xl-9">
-            <div class="h4" style="padding-top: 1%;">
-                <span style="font-weight: 600; margin-right:2%; ">Ваш результат:</span>
-                <span [ngClass]="{'result': resultPredicate}">{{result}}</span>
-            </div>
-        </div>
-    </div>
-    <div class="row row-margin">
-
     </div>
 </div>
+<div class="container container-custom " style="margin-top: 2%; " *ngIf="viewResultPredicate && loading">
+    <div *ngIf="loading ">
+        <div class="row row-margin ">
+            <div class="col-xl-12 question-title ">
+                Відповіді:
+            </div>
+        </div>
+        <div class="row row-margin " *ngFor="let question of questions ">
+            <div class="col-xl-12 ">
+                <div class="container container-custom-q ">
+                    <app-end-answers [question]="question "></app-end-answers>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loadingTemplate>
+    <app-spinner></app-spinner>
+</ng-template>

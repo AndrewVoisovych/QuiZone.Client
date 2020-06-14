@@ -13,10 +13,13 @@ export class AddQuizComponent implements OnInit {
   category: string;
   topic: string = '';
   predicateTimer: boolean = false;
-  timerValue: number;
+  timerValue: number = 0;
   positionPredicate: boolean = false;
-  constructor(private toastr: ToastrService, private router: Router) { 
-    
+  answerVisible: string = '';
+
+
+  constructor(private toastr: ToastrService, private router: Router) {
+
   }
 
   ngOnInit() {
@@ -40,8 +43,6 @@ export class AddQuizComponent implements OnInit {
 
 
   timerCheckbox(event: any) {
-    this.predicateTimer = !this.predicateTimer;
-    this.timerValue = 0;
 
   }
   randomPositionCheckbox(event: any) {

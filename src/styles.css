@@ -19,3 +19,11 @@
 .toast-warning {
     background-color: #FFCC80 !important;
 }
+
+.loading {
+    margin-top: 10% !important;
+    margin-bottom: 30% !important;
+    padding: 15%;
+    border: none !important;
+    border-radius: none !important;
+}

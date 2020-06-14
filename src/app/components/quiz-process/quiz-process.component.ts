@@ -1,4 +1,3 @@
-import { TempService } from './../../core/services/temp.service';
 import { Question, Answer } from './../../core/models/question';
 import { Quiz } from './../../core/models/quiz';
 import { QuizService } from './../../core/services/quiz.service';
@@ -44,8 +43,7 @@ export class QuizProcessComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private screen: ScreenService,
-    private quizService: QuizService,
-    private temp: TempService) {
+    private quizService: QuizService) {
 
     if (this.route.snapshot.params.id) {
       this.quizId = this.route.snapshot.params.id;
@@ -88,7 +86,6 @@ export class QuizProcessComponent implements OnInit {
   currentPage(page: number) {
     this.currentQuestion = page;
     this.contentFill();
-    this.temp.question = this.question;
   }
 
   contentFill() {
@@ -119,6 +116,7 @@ export class QuizProcessComponent implements OnInit {
   }
 
   endQuiz() {
+
     $('#endQuizButton').modal();
   }
 }

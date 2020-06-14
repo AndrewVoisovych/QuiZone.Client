@@ -1,4 +1,3 @@
-import { TempService } from './../../../core/services/temp.service';
 import { Answer } from './../../../core/models/question';
 import { Component, OnInit, Input,  SimpleChanges } from '@angular/core';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +19,7 @@ export class QuizAnswersComponent implements OnInit {
   downIcon = faChevronDown;
   questionType: string = '';
 
-  constructor(private temp:TempService) { }
+  constructor() { }
 
   ngOnInit() {
   }

@@ -42,7 +42,7 @@
     color: #ffffff;
 }
 
-.r-bottom{
+.r-bottom {
     margin-bottom: 2%;
 }
 
@@ -52,4 +52,12 @@
 
 .date-setting-title:hover {
     text-decoration: none;
+}
+
+input:read-only {
+    background: #FAFAFA;
+}
+
+.accordion>.card {
+    overflow: visible;
 }

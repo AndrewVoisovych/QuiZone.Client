@@ -15,9 +15,12 @@
         <app-search-box class="search-box" (search)="search($event)"></app-search-box>
         <!-- search box end-->
     </div>
-    <div class="row row-margin no-gutter">
+    <div class="row row-margin no-gutter" *ngIf="loading; else loadingTemplate">
         <div *ngFor="let quiz of quizesFilter" class="col-sm-3">
             <app-quiz-cards [quiz]="quiz"></app-quiz-cards>
         </div>
     </div>
 </div>
+<ng-template #loadingTemplate>
+    <app-spinner></app-spinner>
+</ng-template>

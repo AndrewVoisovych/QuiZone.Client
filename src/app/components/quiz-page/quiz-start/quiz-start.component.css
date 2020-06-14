@@ -1,9 +1,8 @@
-.row-margin{
-    margin-top:1%;
-
+.row-margin {
+    margin-top: 1%;
 }
 
-.container{
+.container {
     margin-top: 5% !important;
     padding: 5%;
     border: 1px solid #F5F5F5;
@@ -11,24 +10,25 @@
 }
 
 .btn-start {
-  background-color: #ff8a65;
-  border-color: #ff8a65;
-  border-width: 0;
-  color: #ffffff;
-  display: block;
-  margin: 0 auto;
-  margin-top: 3%;
-  padding: 15px 50px;
-  text-transform: uppercase;
-  width: 70%;
-  float:left;
-}
-.btn-start:hover {
-  background-color: #ff7043;
-  color: #ffffff;
+    background-color: #ff8a65;
+    border-color: #ff8a65;
+    border-width: 0;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    margin-top: 3%;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    width: 70%;
+    float: left;
 }
 
-b{
-  color: #FF8A65;
-  font-weight: 500;
+.btn-start:hover {
+    background-color: #ff7043;
+    color: #ffffff;
+}
+
+b {
+    color: #FF8A65;
+    font-weight: 500;
 }

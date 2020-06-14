@@ -2,9 +2,12 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 <navbar></navbar>
+
 <div *ngIf="!isScreenBlock; else screenBlock">
+
     <router-outlet></router-outlet>
     <app-footer></app-footer>
+
 </div>
 <ng-template #screenBlock>
     <div (mouseleave)="blockScreen($event)">
@@ -13,5 +16,3 @@
     </div>
     <app-quiz-blocked></app-quiz-blocked>
 </ng-template>
-
-
