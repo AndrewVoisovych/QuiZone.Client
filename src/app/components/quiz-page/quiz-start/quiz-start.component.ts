@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Quiz } from 'src/app/core/models/quiz';
 import { ViewQuizType } from 'src/app/core/helper/quiz-type-helper';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-quiz-start',
@@ -22,7 +23,7 @@ export class QuizStartComponent implements OnInit {
   quizType: string = '';
   quizAccess: string;
   timerValue: number;
-
+  countQuestion: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class QuizStartComponent implements OnInit {
     private viewQuizType: ViewQuizType,
     private viewQuizAccess: ViewQuizAccess,
     private authService: AuthenticationService,
+    private spinner: NgxSpinnerService
   ) {
     if (this.route.snapshot.params.id) {
       this.quizId = this.route.snapshot.params.id;
@@ -42,6 +44,7 @@ export class QuizStartComponent implements OnInit {
 
   ngOnInit() {
     if (this.quizId) {
+
       this.quizService.getQuiz(this.quizId).subscribe(res => {
         this.quiz = res;
         this.link += this.quiz.id;
@@ -52,7 +55,20 @@ export class QuizStartComponent implements OnInit {
 
         this.quizType = this.viewQuizType.output(this.quiz.categoryId);
         this.quizAccess = this.viewQuizAccess.output(this.quiz.accessId)
+
+
+
+        this.quizService.getCountQuestions(this.quizId).subscribe(
+          result => {
+            this.countQuestion = result;
+          },
+          error => {
+            this.countQuestion = 0;
+          }
+        );
+
         this.loading = true;
+
       },
         err => {
           this.toastr.warning('Такого опитування не існує', 'Помилка');
@@ -64,7 +80,7 @@ export class QuizStartComponent implements OnInit {
     }
   }
 
-  start():void{
+  start(): void {
     if (!this.authService.isLoggedIn()) {
       this.toastr.error('Авторизуйтесь перед проходженням тестування', 'Помилка доступу');
     }

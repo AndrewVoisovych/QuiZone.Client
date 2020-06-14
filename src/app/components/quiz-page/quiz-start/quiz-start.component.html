@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <p><b>Кількість питань:</b> 6</p>
+                        <p *ngIf="countQuestion!=0"><b>Кількість питань:</b> {{countQuestion}}</p>
                     </td>
                     <td>
                         <p *ngIf="loading && quiz.setting.timerValue"><b>Часовий ліміт:</b> 5 хв</p>
@@ -52,5 +52,6 @@
         Почати тестування
       </button>
         </div>
+
     </div>
 </div>

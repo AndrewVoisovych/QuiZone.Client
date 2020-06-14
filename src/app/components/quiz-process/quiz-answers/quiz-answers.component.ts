@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Answer } from './../../../core/models/question';
+import { Component, OnInit, Input,  SimpleChanges } from '@angular/core';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { QuestionType } from 'src/app/core/models/question.enum';
 
@@ -9,7 +10,7 @@ import { QuestionType } from 'src/app/core/models/question.enum';
 })
 
 export class QuizAnswersComponent implements OnInit {
-  @Input() answers: { id: number, body: string, checked: boolean }[];
+  @Input() answers: Answer[];
   @Input() questionId: number;
 
   checked: boolean;

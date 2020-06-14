@@ -1,9 +1,10 @@
-
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ObjectServerQuestions } from '../../core/temp-data/objectServerQuestions';
+import { Question, Answer } from './../../core/models/question';
+import { Quiz } from './../../core/models/quiz';
+import { QuizService } from './../../core/services/quiz.service';
+import { Component, OnInit } from '@angular/core';
 import { QuizPaginator } from 'src/app/core/models/pagination';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ScreenService } from 'src/app/core/services/screen.service';
 declare var $: any;
 
@@ -14,24 +15,67 @@ declare var $: any;
 })
 
 export class QuizProcessComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private toastr: ToastrService,
-    private screen: ScreenService) { }
+  // Quiz - questtion model
+  quizId: number;
+  quiz: Quiz;
+  question: Question[];
+  answers: Answer[];
 
+  //loading?
+  loading: boolean = false;
+
+  //data fill
+  currentQuestion: number;
   testingName: string;
-  question: string;
+  questionBody: string;
   categoryId: number;
-  answers: { id: number, body: string}[];
+
+
+  // func
   timer: number;
   page: QuizPaginator;
-  currentQuestion: number;
-  quizId: number;
-  objectServer = ObjectServerQuestions;
+  blockTab: boolean = false;
+  endLink: string;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private screen: ScreenService,
+    private quizService: QuizService) {
+
+    if (this.route.snapshot.params.id) {
+      this.quizId = this.route.snapshot.params.id;
+    }
+  }
+
 
   ngOnInit() {
-    this.currentQuestion = 0;
-    this.contentFill();
+
+    this.quizService.getQuiz(this.quizId).subscribe(result => {
+      this.quiz = result;
+
+      this.quizService.getQuestions(this.quiz.id).subscribe(result => {
+        this.question = result;
+        this.currentQuestion = 0;
+
+        this.quizService.getEndHash(this.quiz.id).subscribe(result=>{
+          this.endLink = result;
+
+          this.loading = true;
+          this.contentFill();
+        })
+      },
+        error => {
+          this.router.navigate(['quiz/start' + this.quizId]);
+          this.toastr.warning('В даному опитуванні поки відсутні питання', 'Попередження');
+        });
+
+    },
+      error => {
+        this.router.navigate(['quiz']);
+        this.toastr.error('Опитування з введеним ідентифікатором відсутнє', 'Помилка');
+      });
   }
 
   currentPage(page: number) {
@@ -40,26 +84,34 @@ export class QuizProcessComponent implements OnInit {
   }
 
   contentFill() {
-    this.testingName = this.objectServer.quizName.length > 25
-      ? this.objectServer.quizName.substring(0, 25) + '...'
-      : this.objectServer.quizName;
+    this.testingName = this.quiz.name.length > 25
+      ? this.quiz.name.substring(0, 25) + '...'
+      : this.quiz.name;
 
-    this.quizId = this.objectServer.id;
-    this.question = this.objectServer.question[this.currentQuestion].body;
-    this.answers = this.objectServer.question[this.currentQuestion].answers;
-    this.timer = this.objectServer.timer * 60;
-    this.categoryId = this.objectServer.question[this.currentQuestion].categoryId;
-    this.page = { allPages: this.objectServer.question.length, CurrentPage: this.currentQuestion };
+    this.timer = this.quiz.setting.timerValue
+      ? this.quiz.setting.timerValue * 60
+      : 0;
+
+    this.blockTab = this.quiz.setting.blockTab
+      ? this.quiz.setting.blockTab
+      : false;
+
+    if (this.blockTab === true) {
+      this.screen.changeValue(true);
+    }
+
+    this.screen.changeValueQuizId(this.quizId);
+    this.screen.changeValueQuizEndHash(this.endLink);
+
+    this.questionBody = this.question[this.currentQuestion].body;
+    this.answers = this.question[this.currentQuestion].answers;
+    this.categoryId = this.question[this.currentQuestion].categoryId;
+
+    this.page = { allPages: this.question.length, CurrentPage: this.currentQuestion };
   }
 
-  endQuiz(){
+  endQuiz() {
     $('#endQuizButton').modal();
   }
-
- test(){
-    this.screen.changeValue(true);
- }
- // (mouseleave)="tq($event)"
-
 }
 

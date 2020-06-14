@@ -23,10 +23,11 @@ export class QuizPaginationComponent implements OnInit {
   faStepForward = faStepForward;
 
   constructor(private paginatr: PaginationAgorithm) { }
+
   ngOnInit() {
 
   }
-  // tslint:disable-next-line:use-lifecycle-interface
+
   ngOnChanges() {
     this.computedData = this.paginatr.Compute(this.page, this.pagesForView);
     this.pagesView();

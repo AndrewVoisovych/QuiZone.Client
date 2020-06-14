@@ -1,11 +1,12 @@
 import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { ClipboardModule } from 'ngx-clipboard';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -84,7 +85,8 @@ import { QuizBlockedComponent } from './components/quiz-process/quiz-blocked/qui
     ReactiveFormsModule,
     AngularPageVisibilityModule,
     NgxMaskModule.forRoot(),
-    ClipboardModule
+    ClipboardModule,
+    NgxSpinnerModule
   ],
   exports: [
     LoginComponent,
@@ -99,7 +101,8 @@ import { QuizBlockedComponent } from './components/quiz-process/quiz-blocked/qui
     AdminGuard,
     UserGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
 
