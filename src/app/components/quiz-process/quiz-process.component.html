@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="loading">
     <div class="row">
         <div class="col-xl-12">
             <div class="serction_title_large">
@@ -9,38 +9,43 @@
         </div>
     </div>
 </div>
-<div class="container container-custom">
-    <div class="row row-margin">
-        <div class="col-xl-4"> <button class="btn-card" style="height: 160%;" (click)="endQuiz()">
+<div class="container container-custom" [ngClass]="{'loading':!loading}">
+    <div *ngIf="loading; else loadingTemplate">
+        <div class="row row-margin">
+            <div class="col-xl-4"> <button class="btn-card" style="height: 160%;" (click)="endQuiz()">
             Завершити
           </button></div>
-        <div class="col-xl-4"></div>
-        <div class="col-xl-4" *ngIf="loading">
-            <!-- Timer -->
-            <app-quiz-timer *ngIf="loading && endLink" [endLink]="endLink" [quizId]="quizId" [time]="timer"></app-quiz-timer>
-            <!-- /Timer -->
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4" *ngIf="loading">
+                <!-- Timer -->
+                <app-quiz-timer *ngIf="loading && endLink" [endLink]="endLink" [quizId]="quizId" [time]="timer"></app-quiz-timer>
+                <!-- /Timer -->
+            </div>
         </div>
-    </div>
-    <div class="row row-margin" style="margin-top: 7%;">
-        <div class="col-xl-12" *ngIf="loading">
-            <!-- Pagination -->
-            <app-quiz-pagination (selectPage)="currentPage($event)" [page]="page"> </app-quiz-pagination>
-            <!-- /Pagination -->
+        <div class="row row-margin" style="margin-top: 7%;">
+            <div class="col-xl-12" *ngIf="loading">
+                <!-- Pagination -->
+                <app-quiz-pagination (selectPage)="currentPage($event)" [page]="page"> </app-quiz-pagination>
+                <!-- /Pagination -->
+            </div>
         </div>
-    </div>
-    <div class="row" style="margin-top: 3%;">
-        <div class="col-xl-3"></div>
-        <div class="col-xl-6 text-center">
-            <div class="question-title">{{ questionBody }}</div>
+        <div class="row" style="margin-top: 3%;">
+            <div class="col-xl-3"></div>
+            <div class="col-xl-6 text-center">
+                <div class="question-title">{{ questionBody }}</div>
+            </div>
+            <div class="col-xl-3"></div>
         </div>
-        <div class="col-xl-3"></div>
-    </div>
-    <div class="row row-margin">
-        <div class="col-xl-12" *ngIf="loading">
-            <!-- Answers -->
-            <app-quiz-answers [questionId]="categoryId" [answers]="answers"></app-quiz-answers>
-            <!-- /Answers -->
+        <div class="row row-margin">
+            <div class="col-xl-12" *ngIf="loading">
+                <!-- Answers -->
+                <app-quiz-answers [questionId]="categoryId" [answers]="answers"></app-quiz-answers>
+                <!-- /Answers -->
+            </div>
         </div>
     </div>
 </div>
 <app-end-button *ngIf="loading && endLink" [endLink]="endLink" [quizId]="quizId"></app-end-button>
+<ng-template #loadingTemplate>
+    <app-spinner></app-spinner>
+</ng-template>

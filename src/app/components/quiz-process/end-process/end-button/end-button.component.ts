@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./end-button.component.css']
 })
 export class EndButtonComponent implements OnInit {
+  @Input() endLink: string;
   @Input() quizId: number;
   constructor( private router: Router) { }
 
@@ -14,6 +15,6 @@ export class EndButtonComponent implements OnInit {
   }
 
   endProcces(){
-    this.router.navigate(['/endquiz']);
+    this.router.navigate([`/endquiz/${this.quizId}/${this.endLink}`]);
   }
 }

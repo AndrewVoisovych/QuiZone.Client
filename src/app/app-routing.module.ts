@@ -18,6 +18,10 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
+    path: 'endquiz/:quiz/:hash',
+    component: EndProcessComponent
+  },
+  {
     path: 'quiz',
     component: QuizPageComponent
   },
@@ -29,10 +33,7 @@ const routes: Routes = [
     path: 'quiz/start/:id',
     component: QuizStartComponent
   },
-  {
-    path: 'endquiz',
-    component: EndProcessComponent
-  },
+
   {
     path: 'addquiz',
     component: AddQuizComponent

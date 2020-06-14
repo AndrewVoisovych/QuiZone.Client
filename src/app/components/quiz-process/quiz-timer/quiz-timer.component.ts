@@ -11,7 +11,10 @@ declare var $: any;
 
 export class QuizTimerComponent implements OnInit {
   @Input() time: number;
+  @Input() endLink: string;
+  @Input() quizId: number;
 
+  timerPredicate: boolean = true;
   countDown: Subscription;
   counter: number;
   tick: number = 1000;
@@ -22,21 +25,27 @@ export class QuizTimerComponent implements OnInit {
   valueNow: number;
 
   ngOnInit() {
-    this.counter = this.time;
+    if(this.time === 0 || this.time === null){
+      this.timerPredicate = false;
+    }else{
+      this.counter = this.time;
 
-    this.countDown = timer(0, this.tick).subscribe(() => {
-      if (this.counter === this.end) {
-        this.state = false;
-        this.countDown.unsubscribe();
-        this.endQuiz();
+      this.countDown = timer(0, this.tick).subscribe(() => {
+        if (this.counter === this.end) {
+          this.state = false;
+          this.countDown.unsubscribe();
+          this.endQuiz();
 
-      } else {
-        --this.counter;
-      }
+        } else {
+          --this.counter;
+        }
 
-      this.secondsInPercent = 100 - ((this.counter * 100) / this.time);
-      this.valueNow = Math.round(this.secondsInPercent);
-    });
+        this.secondsInPercent = 100 - ((this.counter * 100) / this.time);
+        this.valueNow = Math.round(this.secondsInPercent);
+      });
+    }
+
+
   }
 
   // tslint:disable-next-line:use-lifecycle-interface

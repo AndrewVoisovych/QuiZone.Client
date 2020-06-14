@@ -13,6 +13,8 @@ declare var $: any;
 export class AppComponent {
 
   isScreenBlock: boolean = false;
+  quizId: number = 0;
+  quizEndHash: string = '';
 
   constructor(
     private screenService: ScreenService,
@@ -24,6 +26,14 @@ export class AppComponent {
   ngOnInit() {
     this.screenService.isScreenBlock$.subscribe(res => {
       this.isScreenBlock = res;
+      if (this.isScreenBlock) {
+        this.screenService.quizId$.subscribe(res => {
+          this.quizId = res;
+          this.screenService.quizEndHash$.subscribe(res => {
+            this.quizEndHash = res;
+          });
+        });
+      }
     });
   }
 
@@ -31,20 +41,24 @@ export class AppComponent {
     $('#endQuizScreenBlock').modal();
   }
 
+  // todo: fix ZINDEX MODAL AFTER TESTING
 
   @OnPageVisibilityChange()
   logWhenPageVisibilityChange(visibilityState: AngularPageVisibilityStateEnum): void {
     if (this.isScreenBlock) {
       if (AngularPageVisibilityStateEnum[visibilityState]
         === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
-        $('#endQuizScreenBlock').modal('hide');
+        $('.modal').modal('hide');
         this.isScreenBlock = false;
-        this.router.navigate(['/endquiz']);
+        this.router.navigate([`/endquiz/${this.quizId}/${this.quizEndHash}`]);
         this.toastr.error('Ваше тестуванння завершено, через те що ви вийшли із вкладки', 'Дострокове завершення тестування');
+        $('.modal').modal('hide');
       }
       else if (AngularPageVisibilityStateEnum[visibilityState]
         === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
-        this.router.navigate(['/endquiz']);
+          $('.modal').modal('hide');
+        this.isScreenBlock = false;
+        this.router.navigate([`/endquiz/${this.quizId}/${this.quizEndHash}`]);
         this.toastr.error('Ваше тестуванння завершено, через те що ви вийшли із вкладки', 'Дострокове завершення тестування');
       }
     }

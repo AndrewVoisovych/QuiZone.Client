@@ -18,6 +18,6 @@ export interface Answer {
   body: string;
   imagePath?: string;
   code?: string;
-  checked?: boolean;
+  checked: boolean;
 }
 

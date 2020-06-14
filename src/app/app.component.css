@@ -1,1 +1,10 @@
-div:focus {outline: none;}
+div:focus {
+    outline: none;
+}
+
+.loading {
+    margin-top: 5% !important;
+    padding: 5%;
+    border: none;
+    border-radius: none;
+}

@@ -1,3 +1,4 @@
+import { TempService } from './../../core/services/temp.service';
 import { Question, Answer } from './../../core/models/question';
 import { Quiz } from './../../core/models/quiz';
 import { QuizService } from './../../core/services/quiz.service';
@@ -6,6 +7,7 @@ import { QuizPaginator } from 'src/app/core/models/pagination';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ScreenService } from 'src/app/core/services/screen.service';
+import { finalize } from 'rxjs/operators';
 declare var $: any;
 
 @Component({
@@ -26,7 +28,7 @@ export class QuizProcessComponent implements OnInit {
 
   //data fill
   currentQuestion: number;
-  testingName: string;
+  testingName: string = "";
   questionBody: string;
   categoryId: number;
 
@@ -42,7 +44,8 @@ export class QuizProcessComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     private screen: ScreenService,
-    private quizService: QuizService) {
+    private quizService: QuizService,
+    private temp: TempService) {
 
     if (this.route.snapshot.params.id) {
       this.quizId = this.route.snapshot.params.id;
@@ -59,10 +62,14 @@ export class QuizProcessComponent implements OnInit {
         this.question = result;
         this.currentQuestion = 0;
 
-        this.quizService.getEndHash(this.quiz.id).subscribe(result=>{
+        this.quizService.getEndHash(this.quiz.id)
+        .pipe(
+          finalize(() => this.loading = true)
+        )
+        .subscribe(result=>{
           this.endLink = result;
 
-          this.loading = true;
+
           this.contentFill();
         })
       },
@@ -81,6 +88,7 @@ export class QuizProcessComponent implements OnInit {
   currentPage(page: number) {
     this.currentQuestion = page;
     this.contentFill();
+    this.temp.question = this.question;
   }
 
   contentFill() {

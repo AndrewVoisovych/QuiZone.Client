@@ -1,28 +1,29 @@
 <div class="container">
-  <div class="row">
-      <div class="col-xl-12">
-          <div class="serction_title_large">
-              <h3>
-                  Завершення тестування
-              </h3>
-          </div>
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="serction_title_large">
+                <h3>
+                    Завершення тестування
+                </h3>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container container-custom">
-  <div class="row row-margin">
-      <div class="col-xl-3">
-        <div class="float-center">
-          <img src="/assets/img/success.png" width="200" height="200" class="img-fluid" alt="Результат" />
+    <div class="row row-margin">
+        <div class="col-xl-3">
+            <div class="float-center">
+                <img src={{imagePath}} width="200" height="200" class="img-fluid" alt="Результат" />
+            </div>
         </div>
-      </div>
-      <div class="col-xl-9"> 
-        <div class="h4" style="padding-top: 1%;">
-          <span style="font-weight: 600; margin-right:2%; ">Ваш результат:</span> триває обрахування...
+        <div class="col-xl-9">
+            <div class="h4" style="padding-top: 1%;">
+                <span style="font-weight: 600; margin-right:2%; ">Ваш результат:</span>
+                <span [ngClass]="{'result': resultPredicate}">{{result}}</span>
+            </div>
         </div>
-      </div>
-  </div>
-  <div class="row row-margin"> 
-    <app-end-button></app-end-button>
-  </div>
+    </div>
+    <div class="row row-margin">
+
+    </div>
 </div>
